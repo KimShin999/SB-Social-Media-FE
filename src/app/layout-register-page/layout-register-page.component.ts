@@ -1,3 +1,4 @@
+import { AuthService } from './../_services/auth.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,9 +8,35 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LayoutRegisterPageComponent implements OnInit {
 
-  constructor() { }
+  form: any = {};
+  isSuccessful = false;
+  isSignUpFailed = false;
+  errorMessage = '';
+
+  constructor(private authService: AuthService) { }
 
   ngOnInit(): void {
   }
+
+  register(): void{
+    this.authService.register(this.form).subscribe(data => {
+      console.log(data)
+      this.isSuccessful = true;
+      this.isSignUpFailed = false;
+      if(this.isSignUpFailed = true){
+        this.isSuccessful = false;
+      } 
+      if(this.isSuccessful = true){
+        this.isSignUpFailed = false;
+      }
+      this.form = {};
+    },
+    err =>
+    {
+      this.errorMessage = err.error.message;
+      this.isSignUpFailed = true;
+    })
+  }
+
 
 }

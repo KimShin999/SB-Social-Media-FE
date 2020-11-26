@@ -1,68 +1,107 @@
-
 <div class="container-fluid px-1 px-md-5 px-lg-1 px-xl-5 py-5 mx-auto">
-  <div class="card card0 border-0">
-      <div class="row d-flex">
-          <div class="col-lg-6">
-              <div class="card1 pb-5">
-                  <div class="row"></div>
-                  <div class="row px-3 justify-content-center mt-4 mb-5 border-line"> <img style="margin-top: 50px;" src="https://res.cloudinary.com/mhmd/image/upload/v1569543678/form_d9sh6m.svg" class="image" > </div>
-              </div>
+    <div class="card card0 border-0">
+        <div class="row d-flex">
+            <div class="col-lg-6">
+                <div class="card1 pb-5">
+                    <div class="row"></div>
+                    <div class="row px-3 justify-content-center mt-4 mb-5 border-line"> <img style="margin-top: 50px;" src="https://res.cloudinary.com/mhmd/image/upload/v1569543678/form_d9sh6m.svg" class="image"> </div>
+                </div>
 
-              <div class="card1 pb-5">
-                <div class="row"></div>
-                <div class="row px-3 justify-content-center mt-4 mb-5 border-line"><h1>Bạn có thích ăn rau rền không ?</h1></div>
-             </div>
+                <div class="card1 pb-5">
+                    <div class="row"></div>
+                    <div class="row px-3 justify-content-center mt-4 mb-5 border-line">
+                        <h1>Bạn có thích ăn rau rền không ?</h1>
+                        <ng-template #elseBlock>
+                            <div class="alert alert-warning" *ngIf="isSignUpFailed; else elseBlock1">
+                                Signup failed!<br />{{ errorMessage }}
+                            </div>
+                        </ng-template>
+                        <ng-template #elseBlock1>
+                            <div style="height: 50px;" class="alert alert-success" *ngIf="isSuccessful; else elseBlock">
+                                Your registration is successful!
+                            </div>
+                        </ng-template>
+                    </div>
+                </div>
 
-          </div>
-          <div class="col-lg-6">
-              <div class="card2 card border-0 px-4 py-5">
-                  <div class="row mb-4 px-3">
-                      <h6 class="mb-0 mr-4 mt-2">Sign in with</h6>
-                      <div class="facebook text-center mr-3">
-                          <div class="fa fa-facebook"></div>
-                      </div>
-                      <div class="twitter text-center mr-3">
-                          <div class="fa fa-twitter"></div>
-                      </div>
-                      <div class="linkedin text-center mr-3">
-                          <div class="fa fa-linkedin"></div>
-                      </div>
-                  </div>
-
-                  <div class="row px-3 mb-4">
-                      <div class="line"></div> <small class="or text-center">Or</small>
-                      <div class="line"></div>
-                  </div>
-                  <div class="row px-3">
-                    <label class="mb-1">
+            </div>
+            <div class="col-lg-6">
+                <div class="card2 card border-0 px-4 py-5">
+                    <div class="row mb-4 px-3">
+                        <h6 class="mb-0 mr-4 mt-2">Sign in with</h6>
+                        <div class="facebook text-center mr-3">
+                            <div class="fa fa-facebook"></div>
+                        </div>
+                        <div class="twitter text-center mr-3">
+                            <div class="fa fa-twitter"></div>
+                        </div>
+                        <div class="linkedin text-center mr-3">
+                            <div class="fa fa-linkedin"></div>
+                        </div>
+                    </div>
+                    <form name="form" (ngSubmit)="f.form.valid" #f="ngForm" novalidate>
+                        <div class="row px-3 mb-4">
+                            <div class="line"></div> <small class="or text-center">Or</small>
+                            <div class="line"></div>
+                        </div>
+                        <div class="row px-3">
+                            <label class="mb-1">
                       <h6 class="mb-0 text-sm">User Name</h6>
-                    </label> <input class="mb-4" type="text" name="text" placeholder="User Name">
-                  </div>
+                    </label> <input class="mb-4" type="text" name="text" placeholder="User Name" name="username" [(ngModel)]="form.username" required minlength="3" maxlength="30" #username="ngModel">
+                            <div class="alert-danger" *ngIf="f.submitted && username.invalid">
+                                <div *ngIf="username.errors.required">Username is required</div>
+                                <div *ngIf="username.errors.minlength">
+                                    Username must be at least 3 characters
+                                </div>
+                                <div *ngIf="username.errors.maxlength">
+                                    Username must be at most 20 characters
+                                </div>
+                            </div>
+                        </div>
 
-                  <div class="row px-3">
-                    <label class="mb-1">
+                        <div class="row px-3">
+                            <label class="mb-1">
+                    <h6 class="mb-0 text-sm">Email</h6>
+                  </label> <input class="mb-4" type="text" name="text" placeholder="User Name" name="email" [(ngModel)]="form.email" required email #email="ngModel">
+                            <div class="alert-danger" *ngIf="f.submitted && email.invalid">
+                                <div *ngIf="email.errors.required">Email is required</div>
+                                <div *ngIf="email.errors.email">
+                                    Email must be a valid email address
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row px-3">
+                            <label class="mb-1">
                         <h6 class="mb-0 text-sm">Password</h6>
                     </label>
-                      <input type="password" name="password" placeholder="Enter password">
-                      <input type="password" name="password" placeholder="Confirm password">
-                  </div>
+                            <input type="password" name="password" placeholder="Enter password" [(ngModel)]="form.password" required minlength="6" #password="ngModel">
+                            <div class="alert-danger" *ngIf="f.submitted && password.invalid">
+                                <div *ngIf="password.errors.required">Password is required</div>
+                                <div *ngIf="password.errors.minlength">
+                                    Password must be at least 6 characters
+                                </div>
+                            </div>
+                            <!-- <input type="password" name="password" placeholder="Confirm password"> -->
+                        </div>
 
-                  <div class="row px-3">
-                    <label class="mb-1">
+                        <div class="row px-3">
+                            <label class="mb-1">
                       <h6 class="mb-0 text-sm">Phone Number</h6>
-                    </label> <input class="mb-4" type="text" name="text" placeholder="Phone Number">
-                  </div>
+                    </label> <input class="mb-4" type="text" name="text" placeholder="Phone Number" name="phoneNumber" [(ngModel)]="form.phoneNumber">
+                        </div>
 
-                  <div class="row px-3">
-                    <label class="mb-1">
+                        <div class="row px-3">
+                            <label class="mb-1">
                       <h6 class="mb-0 text-sm">Date Of Birth</h6>
                     </label>
-                    <input class="mb-4" type="date" name="dateofbirt">
-                  </div>
-                  <div class="row mb-3 px-3"> <button type="submit" class="btn btn-blue text-center">Register</button> </div>
-                  <div class="row mb-4 px-3"> <small class="font-weight-bold">Already Registered? <a class="text-danger ">Login</a></small> </div>
-              </div>
-          </div>
-      </div>
-  </div>
+                            <input class="mb-4" type="date" name="dateOfBirth" [(ngModel)]="form.dateOfBirth">
+                        </div>
+                        <div class="row mb-3 px-3"> <button type="submit" class="btn btn-blue text-center" (click)="register()">Register</button> </div>
+                    </form>
+                    <div class="row mb-4 px-3"> <small class="font-weight-bold">Already Registered? <a class="text-danger " routerLink="/login">Login</a></small> </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
