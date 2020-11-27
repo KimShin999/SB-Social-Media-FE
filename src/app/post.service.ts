@@ -14,7 +14,7 @@ export class PostService {
     debugger
     const formData: FormData = new FormData();
     formData.append('file', file);
-    const req = new HttpRequest('POST', `${this.baseUrl}/imgPost`, formData,{
+    const req = new HttpRequest('POST', `${this.baseUrl}/api/posts/imgPost`, formData,{
       reportProgress: true,
       responseType: 'json'
     });
@@ -23,7 +23,7 @@ export class PostService {
 
   createpost = (content: String): Promise<Object> => {
     return new Promise((resolve, reject) => {
-      let url = `http://localhost:8080/createpost/${content}`;
+      let url = `http://localhost:8080/api/posts/createpost/${content}`;
       this.http.get(url)
       .subscribe(res =>{
         resolve(res);
