@@ -9,7 +9,7 @@
  */
 'use strict';
 
-(function(root, factory) {
+(function (root, factory) {
   const pluginName = 'BackgroundVideo';
 
   if (typeof define === 'function' && define.amd) {
@@ -19,7 +19,7 @@
   } else {
     root[pluginName] = factory(pluginName);
   }
-}((window || module || {}), function(pluginName) {
+}((window || module || {}), function (pluginName) {
   /**
    * Default options
    */
@@ -32,8 +32,10 @@
     minimumVideoWidth: 400,
 
     // Callback functions
-    onBeforeReady: function() {},
-    onReady: function() {}
+    onBeforeReady: function () {
+    },
+    onReady: function () {
+    }
   };
 
   /**
@@ -42,8 +44,7 @@
   const addClass = function (el, className) {
     if (el.classList) {
       el.classList.add(className);
-    }
-    else {
+    } else {
       el.className += ' ' + className;
     }
   };
@@ -73,7 +74,7 @@
       // Set window dimensions
       this.setWindowDimensions();
       // Loop through each video and init
-      for(let i = 0; i < this.element.length; i++) {
+      for (let i = 0; i < this.element.length; i++) {
         this.init(this.element[i], i);
       }
     }
@@ -288,7 +289,7 @@
      * @method insertVideos
      */
     insertVideos() {
-      for(let i = 0; i < this.options.src.length; i++) {
+      for (let i = 0; i < this.options.src.length; i++) {
         let videoTypeArr = this.options.src[i].split('.');
         let videoType = videoTypeArr[videoTypeArr.length - 1];
 
@@ -350,17 +351,19 @@
       }
 
       if (!window.requestAnimationFrame)
-        window.requestAnimationFrame = function(callback, element) {
+        window.requestAnimationFrame = function (callback, element) {
           var currTime = new Date().getTime();
           var timeToCall = Math.max(0, 16 - (currTime - lastTime));
-          var id = window.setTimeout(function() { callback(currTime + timeToCall); },
+          var id = window.setTimeout(function () {
+              callback(currTime + timeToCall);
+            },
             timeToCall);
           lastTime = currTime + timeToCall;
           return id;
         };
 
       if (!window.cancelAnimationFrame)
-        window.cancelAnimationFrame = function(id) {
+        window.cancelAnimationFrame = function (id) {
           clearTimeout(id);
         };
     }

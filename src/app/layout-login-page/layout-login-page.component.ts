@@ -1,3 +1,4 @@
+
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../_services/auth.service';
@@ -20,10 +21,11 @@ export class LayoutLoginPageComponent implements OnInit {
   roles: string[] = [];
 
   constructor(
-    private authService: AuthService, 
+    private authService: AuthService,
     private tokenStorage: TokenStorageService,
     private router: Router
   ) { }
+
 
   ngOnInit(): void {
     if (this.tokenStorage.getToken()) {

@@ -1,7 +1,9 @@
+
 import { UserService } from './../_services/user.service';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { TokenStorageService } from '../_services/token-storage.service';
+
 
 @Component({
   selector: 'app-layout-timeline-page',
@@ -9,6 +11,7 @@ import { TokenStorageService } from '../_services/token-storage.service';
   styleUrls: ['./layout-timeline-page.component.css']
 })
 export class LayoutTimelinePageComponent implements OnInit {
+
 
   roles: string[] = [];
   content: string;
@@ -19,6 +22,7 @@ export class LayoutTimelinePageComponent implements OnInit {
     private tokenStorage: TokenStorageService,
     private router: Router
   ) { }
+
 
   ngOnInit(): void {
     this.isLoggedIn = !!this.tokenStorage.getToken();

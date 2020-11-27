@@ -1,6 +1,6 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { LayoutRegisterPageComponent } from './layout-register-page.component';
+import {LayoutRegisterPageComponent} from './layout-register-page.component';
 
 describe('LayoutRegisterPageComponent', () => {
   let component: LayoutRegisterPageComponent;
@@ -8,9 +8,9 @@ describe('LayoutRegisterPageComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ LayoutRegisterPageComponent ]
+      declarations: [LayoutRegisterPageComponent]
     })
-    .compileComponents();
+      .compileComponents();
   });
 
   beforeEach(() => {
