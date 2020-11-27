@@ -4,11 +4,11 @@ import { TokenStorageService } from '../_services/token-storage.service';
 import { UserService } from '../_services/user.service';
 
 @Component({
-  selector: 'app-newfeed',
-  templateUrl: './newfeed.component.html',
-  styleUrls: ['./newfeed.component.css']
+  selector: 'app-timeline-profile',
+  templateUrl: './timeline-profile.component.html',
+  styleUrls: ['./timeline-profile.component.css']
 })
-export class NewfeedComponent implements OnInit {
+export class TimelineProfileComponent implements OnInit {
 
   roles: string[] = [];
   user: any = {};
@@ -34,5 +34,4 @@ export class NewfeedComponent implements OnInit {
       }
     );
     }
-
 }

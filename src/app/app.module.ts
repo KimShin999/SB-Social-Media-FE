@@ -19,6 +19,7 @@ import { FriendsComponent } from './friends/friends.component';
 import { AboutComponent } from './about/about.component';
 import { FormsModule } from '@angular/forms';
 import { authInterceptorProviders } from './_helpers/auth.interceptor';
+import { TimelineProfileComponent } from './timeline-profile/timeline-profile.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { authInterceptorProviders } from './_helpers/auth.interceptor';
     CoverComponent,
     PhotoComponent,
     FriendsComponent,
-    AboutComponent
+    AboutComponent,
+    TimelineProfileComponent
   ],
   imports: [
     BrowserModule,

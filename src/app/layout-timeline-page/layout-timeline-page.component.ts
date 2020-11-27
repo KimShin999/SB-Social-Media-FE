@@ -11,8 +11,9 @@ import { TokenStorageService } from '../_services/token-storage.service';
 export class LayoutTimelinePageComponent implements OnInit {
 
   roles: string[] = [];
-  content: string;
+  user: any = {};
   isLoggedIn = false;
+  id =  this.tokenStorage.getUser().id;
 
   constructor(
     private userService: UserService,
@@ -20,17 +21,22 @@ export class LayoutTimelinePageComponent implements OnInit {
     private router: Router
   ) { }
 
+  
+
   ngOnInit(): void {
     this.isLoggedIn = !!this.tokenStorage.getToken();
     if(!this.isLoggedIn){
       this.router.navigateByUrl('/login')
     }
-    this.userService.getUserBoard().subscribe(
+    console.log(this.id)
+    this.userService.getUserById(this.id).subscribe(
       data => {
-        this.content = data;
+        this.user = data;
+        console.log(this.user);
+        
       },
       err => {
-        this.content = JSON.parse(err.error).message;
+        this.user = JSON.parse(err.error).message;
       }
     );
     }

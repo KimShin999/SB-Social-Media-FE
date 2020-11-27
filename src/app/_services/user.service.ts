@@ -12,7 +12,7 @@ export class UserService {
   constructor(private http: HttpClient) { }
 
 
-  getUserBoard(): Observable<any> {
-    return this.http.get(API_URL + 'content', { responseType: 'text' });
+  getUserById(id): Observable<any> {
+    return this.http.get(API_URL + 'getUserById/' + id);
   }
 }
