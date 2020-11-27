@@ -1,16 +1,17 @@
+
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
 const API_URL = 'http://localhost:8080/api/users/';
 
+
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
-  
-  constructor(private http: HttpClient) { }
 
+  constructor(private http: HttpClient) { }
 
   getUserById(id): Observable<any> {
     return this.http.get(API_URL + 'getUserById/' + id);

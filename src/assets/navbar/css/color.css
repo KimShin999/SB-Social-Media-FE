@@ -1,9 +1,9 @@
 /*=========================
 	FONT COLOR
 =========================*/
-.product-carousel .owl-nav .owl-prev::before, 
+.product-carousel .owl-nav .owl-prev::before,
 .product-carousel .owl-nav .owl-next::before,
-.product-caro .owl-prev:hover:before, 
+.product-caro .owl-prev:hover:before,
 .product-caro .owl-next:hover:before,
 .log-reg-area form .forgot-pwd,
 .log-reg-area form .already-have,
@@ -40,14 +40,14 @@ a.forgot-pwd,
 .top-area > ul.main-menu > li > ul li a:hover,
 .dropdowns.active > a i,
 .user-setting > a i,
-.form-group input.form-file ~ .control-label, 
-.form-group input.has-value ~ .control-label, 
-.form-group input:focus ~ .control-label, 
-.form-group input:valid ~ .control-label, 
-.form-group select ~ .control-label, 
-.form-group textarea.form-file ~ .control-label, 
-.form-group textarea.has-value ~ .control-label, 
-.form-group textarea:focus ~ .control-label, 
+.form-group input.form-file ~ .control-label,
+.form-group input.has-value ~ .control-label,
+.form-group input:focus ~ .control-label,
+.form-group input:valid ~ .control-label,
+.form-group select ~ .control-label,
+.form-group textarea.form-file ~ .control-label,
+.form-group textarea.has-value ~ .control-label,
+.form-group textarea:focus ~ .control-label,
 .form-group textarea:valid ~ .control-label,
 .flaged > h3,
 .invition .friend-meta a.invite:hover,
@@ -82,15 +82,16 @@ blockquote,
 .help-list > ul li a:hover,
 .employer-info h2,
 .job-detail > ul li i,
-.company-intro > a
-{
-	color: #088dcd;	
+.company-intro > a {
+  color: #088dcd;
 }
-svg{
-stroke: #fff;
+
+svg {
+  stroke: #fff;
 }
-path.icon{
-	fill: #fff;
+
+path.icon {
+  fill: #fff;
 }
 
 
@@ -145,12 +146,9 @@ button.submit-checkout,
 .proceed .button,
 .amount-area .update-cart,
 a.addnewforum,
-.apply-bttons > a
-{
-	background: #088dcd;
+.apply-bttons > a {
+  background: #088dcd;
 }
-
-
 
 
 /*=========================
@@ -165,18 +163,18 @@ a.addnewforum,
 .g-post-classic:hover > figure > i,
 .help-list > a:hover,
 a.btn2:hover,
-.single-btn > li > a.active
-{
-	border-color: #088dcd;	
+.single-btn > li > a.active {
+  border-color: #088dcd;
 }
 
-#nprogress .spinner-icon{
-	border-left-color: #088dcd;
+#nprogress .spinner-icon {
+  border-left-color: #088dcd;
 }
-#nprogress .spinner-icon
-{
-	border-top-color: #088dcd;		
+
+#nprogress .spinner-icon {
+  border-top-color: #088dcd;
 }
-.timeline-info > ul li a:after{
-	border-bottom-color: #088dcd;
+
+.timeline-info > ul li a:after {
+  border-bottom-color: #088dcd;
 }

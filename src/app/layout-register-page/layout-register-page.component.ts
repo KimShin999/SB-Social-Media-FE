@@ -1,5 +1,7 @@
+
 import { AuthService } from './../_services/auth.service';
 import { Component, OnInit } from '@angular/core';
+
 
 @Component({
   selector: 'app-layout-register-page',
@@ -25,7 +27,7 @@ export class LayoutRegisterPageComponent implements OnInit {
       this.isSignUpFailed = false;
       if(this.isSignUpFailed = true){
         this.isSuccessful = false;
-      } 
+      }
       if(this.isSuccessful = true){
         this.isSignUpFailed = false;
       }

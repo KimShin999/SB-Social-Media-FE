@@ -10,7 +10,6 @@ import { UserService } from '../_services/user.service';
   styleUrls: ['./cover.component.css']
 })
 export class CoverComponent implements OnInit {
-
   roles: string[] = [];
   user: any = {};
   isLoggedIn = false;

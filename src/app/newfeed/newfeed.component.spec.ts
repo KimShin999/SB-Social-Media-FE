@@ -1,6 +1,6 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { NewfeedComponent } from './newfeed.component';
+import {NewfeedComponent} from './newfeed.component';
 
 describe('NewfeedComponent', () => {
   let component: NewfeedComponent;
@@ -8,9 +8,9 @@ describe('NewfeedComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ NewfeedComponent ]
+      declarations: [NewfeedComponent]
     })
-    .compileComponents();
+      .compileComponents();
   });
 
   beforeEach(() => {
