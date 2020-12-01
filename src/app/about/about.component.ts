@@ -1,4 +1,8 @@
+import { HttpClient } from '@angular/common/http';
 import {Component, OnInit} from '@angular/core';
+import { Router } from '@angular/router';
+import { TokenStorageService } from '../_services/token-storage.service';
+import { UserService } from '../_services/user.service';
 
 @Component({
   selector: 'app-about',
@@ -6,11 +10,28 @@ import {Component, OnInit} from '@angular/core';
   styleUrls: ['./about.component.css']
 })
 export class AboutComponent implements OnInit {
-
-  constructor() {
+  user: any = {
+  }
+  id =  this.tokenStorage.getUser().id;
+  constructor(
+    private userService: UserService,
+    private tokenStorage: TokenStorageService,
+    private router: Router,
+    private http: HttpClient
+  ) {
   }
 
   ngOnInit(): void {
+    this.userService.getUserById(this.id).subscribe(
+      data => {
+        this.user = data;
+        console.log(this.user);
+      },
+      err => {
+        this.user = JSON.parse(err.error).message;
+      }
+      
+    );
   }
 
 }

@@ -1,3 +1,4 @@
+import { GalleriaModule } from 'primeng/galleria';
 
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { BrowserModule } from '@angular/platform-browser';
@@ -43,7 +44,8 @@ import { TimelineProfileComponent } from './timeline-profile/timeline-profile.co
     BrowserModule,
     AppRoutingModule,
     NgbModule,
-    FormsModule
+    FormsModule,
+    GalleriaModule,
   ],
   providers: [authInterceptorProviders],
   bootstrap: [AppComponent]

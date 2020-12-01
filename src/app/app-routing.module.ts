@@ -1,3 +1,4 @@
+import { TimelineProfileComponent } from './timeline-profile/timeline-profile.component';
 import { NewfeedComponent } from './newfeed/newfeed.component';
 import { AboutComponent } from './about/about.component';
 import { LayoutHomePageComponent } from './layout-home-page/layout-home-page.component';
@@ -22,7 +23,7 @@ const routes: Routes = [
     },
     {
       path: 'newfeed',
-      component: NewfeedComponent
+      component: TimelineProfileComponent
     },
     {
       path: 'about',

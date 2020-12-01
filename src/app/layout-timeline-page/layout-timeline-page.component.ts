@@ -26,8 +26,7 @@ export class LayoutTimelinePageComponent implements OnInit {
 
   
   ngOnInit(): void {
-    this.isLoggedIn = !!this.tokenStorage.getToken();
-    if(!this.isLoggedIn){
+    if(this.tokenStorage.getToken() == null){
       this.router.navigateByUrl('/login')
     }
     console.log(this.id)

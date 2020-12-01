@@ -76,6 +76,7 @@ export class NewfeedComponent implements OnInit {
         break;
       }
     }
+    
     if (isImage) {
       this.selectedFiles = event.target.files;
     } else {
