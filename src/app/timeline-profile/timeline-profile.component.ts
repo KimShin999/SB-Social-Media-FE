@@ -1,12 +1,12 @@
-import { CommentService } from './../_services/comment.service';
-import { PostService } from './../_services/post.service';
 import { ProfilePostService } from './../_services/profile-post.service';
+import { PostService } from './../_services/post.service';
 import { HttpEventType, HttpResponse } from '@angular/common/http';
 import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { TokenStorageService } from '../_services/token-storage.service';
 import { UserService } from '../_services/user.service';
+import { CommentService } from '../_services/comment.service';
 
 @Component({
   selector: 'app-timeline-profile',
@@ -129,6 +129,7 @@ export class TimelineProfileComponent implements OnInit {
       if(this.posts[index].id == this.post.id){
         this.posts[index] = this.post
       }
+
     }
   }
 
