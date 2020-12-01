@@ -122,5 +122,8 @@
       }
     }
   },
-  "defaultProject": "fontend123333"
+  "defaultProject": "fontend123333",
+  "cli": {
+    "analytics": "336b49da-b31d-4330-9c70-e6d09a0cf5f7"
+  }
 }

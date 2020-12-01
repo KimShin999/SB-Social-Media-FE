@@ -17,9 +17,10 @@ import { CoverComponent } from './cover/cover.component';
 import { PhotoComponent } from './photo/photo.component';
 import { FriendsComponent } from './friends/friends.component';
 import { AboutComponent } from './about/about.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { authInterceptorProviders } from './_helpers/auth.interceptor';
 import { TimelineProfileComponent } from './timeline-profile/timeline-profile.component';
+import {GalleriaModule} from 'primeng/galleria';             
 
 @NgModule({
   declarations: [
@@ -43,7 +44,9 @@ import { TimelineProfileComponent } from './timeline-profile/timeline-profile.co
     BrowserModule,
     AppRoutingModule,
     NgbModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule,
+    GalleriaModule
   ],
   providers: [authInterceptorProviders],
   bootstrap: [AppComponent]

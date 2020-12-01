@@ -16,11 +16,18 @@ export class NewfeedComponent implements OnInit {
   roles: string[] = [];
   user: any = {};
   isLoggedIn = false;
-  id =  this.tokenStorage.getUser().id;
-  progressInfos: any =[];
+  id = this.tokenStorage.getUser().id;
+  progressInfos: any = [];
   fileInfos: Observable<any>;
   content: string;
   selectedFiles: FileList;
+
+  //thuong them
+  listGlobalPost: any = [];
+  listGlobalPostTemp: any = []; //cai list buffer de lay gia tri posts
+
+
+  //
 
   constructor(
     private userService: UserService,
@@ -29,18 +36,19 @@ export class NewfeedComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    this.getAllGlobalPost();
     console.log(this.id)
     this.userService.getUserById(this.id).subscribe(
       data => {
         this.user = data;
         console.log(this.user);
-        
+
       },
       err => {
         this.user = JSON.parse(err.error).message;
       }
     );
-    }
+  }
 
   upload(idx, file): void {
     debugger
@@ -56,17 +64,17 @@ export class NewfeedComponent implements OnInit {
       err => {
         this.progressInfos[idx].percentage = 0;
       });
-    }
+  }
 
 
-  upPost():void{
-    this.service.createpost(this.content)
+  upPost(): void {
+    this.service.createpost(this.content);
   }
 
   selectFiles(event): void {
     debugger
     this.progressInfos = [];
-    const files = event.target.files;    let isImage = true;
+    const files = event.target.files; let isImage = true;
     for (let i = 0; i < files.length; i++) {
       if (files.item(i).type.match('image.*')) {
         continue;
@@ -80,10 +88,33 @@ export class NewfeedComponent implements OnInit {
       this.selectedFiles = event.target.files;
     } else {
       this.selectedFiles = undefined;
-       event.srcElement.percentage = null;
+      event.srcElement.percentage = null;
     }
     for (let i = 0; i < this.selectedFiles.length; i++) {
       this.upload(i, this.selectedFiles[i]);
     }
   }
+
+  //thuong them
+  getAllGlobalPost() {
+    this.service.getGlobalPost()
+      .then(res => {
+        this.listGlobalPost = res;
+      }).catch(e => {
+        alert('Connection Error !');
+      })
+    alert("ok");
+  }
+
+  // getAllGlobalPost(){
+  //   for(var i = 0; i < this.listGlobalPostTemp.length; i++){
+  //     this.listGlobalPost.push(
+  //       {
+  //         username: this.userService.getUserById(this.listGlobalPostTemp.app_user_id).username;
+  //         avatar: this.listGlobalPostTemp.
+  //       }
+  //     );
+  //   }
+  // }
+  //
 }
