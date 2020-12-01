@@ -15,6 +15,13 @@ export class LayoutLoginPageComponent implements OnInit {
     username: "",
     password: ""
   };
+
+
+  list: any = [
+    'nam', "nữ"
+  ];
+
+
   isLoggedIn = false;
   isLoginFailed = false;
   errorMessage = '';

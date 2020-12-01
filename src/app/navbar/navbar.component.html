@@ -4,6 +4,14 @@
             <a title="" href="newsfeed.html"><img src="../assets/navbar/images/logo2.png" alt=""></a>
         </div>
         <div class="top-area">
+          <div class="user-img">
+            <button class="btn btn-outline-light" style="border-radius: 20px; margin-bottom: 8px; width: 100px; height: 40px;">
+              <label>
+                <img src="{{user.avatar}}" alt="" style=" width: 25px; height: 25px; border-radius: 50%;">
+                <label style="color: black; margin-left: 8px; ">Tên user</label>
+              </label>
+            </button>
+          </div>
             <ul class="setting-area">
                 <li>
                     <a href="#" title="Home" data-ripple=""><i class="ti-search"></i></a>
@@ -147,24 +155,11 @@
                 </li>
                 <li>
                     <button class="btn btn-outline-light" style="border-radius: 50%;">
-            <a href="#" title="Languages" data-ripple=""><i class="fa fa-globe" style="color:blue;"></i></a>
-          </button>
+                      <a href="#" title="Languages" data-ripple=""><i class="fa fa-globe" style="color:blue;"></i></a>
+                    </button>
                 </li>
             </ul>
-            <div class="user-img">
-                <img src="{{user.avatar}}" alt="" style="width: 50px;">
-                <span class="status f-online"></span>
-                <div class="user-setting">
-                    <a href="#" title=""><span class="status f-online"></span>online</a>
-                    <a href="#" title=""><span class="status f-away"></span>away</a>
-                    <a href="#" title=""><span class="status f-off"></span>offline</a>
-                    <a href="#" title="" routerLink="/profile"><i class="ti-user"></i> view profile</a>
-                    <a href="#" title=""><i class="ti-pencil-alt"></i>edit profile</a>
-                    <a href="#" title=""><i class="ti-target"></i>activity log</a>
-                    <a href="#" title=""><i class="ti-settings"></i>account setting</a>
-                    <a href="#" title=""><i class="ti-power-off"></i>log out</a>
-                </div>
-            </div>
+
         </div>
     </div>
 

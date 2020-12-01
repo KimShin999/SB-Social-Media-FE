@@ -20,6 +20,12 @@ import { AboutComponent } from './about/about.component';
 import { FormsModule } from '@angular/forms';
 import { authInterceptorProviders } from './_helpers/auth.interceptor';
 import { TimelineProfileComponent } from './timeline-profile/timeline-profile.component';
+import { LayoutHomeFriendPageComponent } from './layout-home-friend-page/layout-home-friend-page.component';
+import { TimelineFriendProfileComponent } from './timeline-friend-profile/timeline-friend-profile.component';
+import { CoverFriendComponent } from './cover-friend/cover-friend.component';
+import { AboutFriendComponent } from './about-friend/about-friend.component';
+import { PhotoFriendComponent } from './photo-friend/photo-friend.component';
+import { FriendOfFriendComponent } from './friend-of-friend/friend-of-friend.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +42,13 @@ import { TimelineProfileComponent } from './timeline-profile/timeline-profile.co
     PhotoComponent,
     FriendsComponent,
     AboutComponent,
-    TimelineProfileComponent
+    TimelineProfileComponent,
+    LayoutHomeFriendPageComponent,
+    TimelineFriendProfileComponent,
+    CoverFriendComponent,
+    AboutFriendComponent,
+    PhotoFriendComponent,
+    FriendOfFriendComponent
   ],
   imports: [
     HttpClientModule,

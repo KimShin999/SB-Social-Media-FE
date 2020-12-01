@@ -1,0 +1,25 @@
+<section>
+  <app-navbar></app-navbar>
+</section>
+<section>
+  <app-cover-friend></app-cover-friend>
+</section>
+<section>
+  <div class="col-lg-12" style="margin-top: 50px;">
+      <div class="row" id="page-contents">
+          <div class="col-lg-3">
+              <app-navbarleft></app-navbarleft>
+          </div>
+
+          <div class="col-lg-6">
+              <router-outlet>
+              </router-outlet>
+          </div>
+
+          <div class="col-lg-3">
+              <app-navbarright></app-navbarright>
+          </div>
+
+      </div>
+  </div>
+</section>
