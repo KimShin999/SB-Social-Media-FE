@@ -7,7 +7,6 @@ import { Observable } from 'rxjs';
 import { TokenStorageService } from '../_services/token-storage.service';
 import { UserService } from '../_services/user.service';
 import { CommentService } from '../_services/comment.service';
-
 @Component({
   selector: 'app-timeline-profile',
   templateUrl: './timeline-profile.component.html',
@@ -17,7 +16,7 @@ export class TimelineProfileComponent implements OnInit {
   
   post: any = {
   };
-  @Input() comment: any = {
+  comment: any = {
     content: ''
   };
   roles: string[] = [];
@@ -29,6 +28,7 @@ export class TimelineProfileComponent implements OnInit {
   selectedFiles: FileList;
   posts: any = [];
 
+
   constructor(
     private userService: UserService,
     private tokenStorage: TokenStorageService,
@@ -37,7 +37,6 @@ export class TimelineProfileComponent implements OnInit {
     private router: Router,
     private commentService: CommentService
   ) { }
-
   ngOnInit(): void {
     this.userService.getUserById(this.id).subscribe(
       data => {
@@ -49,7 +48,6 @@ export class TimelineProfileComponent implements OnInit {
     );
     this.getAllPostByUser();
     }
-
   upload(idx, file): void {
     debugger
     this.progressInfos[idx] = { value: 0, fileName: file.name };
@@ -65,18 +63,6 @@ export class TimelineProfileComponent implements OnInit {
         this.progressInfos[idx].percentage = 0;
       });
     }
-
-
-  upPost():void{
-    this.profilePostService.createpost(this.post,this.id).
-    then(res =>{
-      this.posts.push(res);
-      this.posts = this.posts.reverse();
-      this.post.content ="";
-    }).catch(e => {
-      console.log("ko dang dc");
-    })
-  }
 
   selectFiles(event): void {
     this.progressInfos = [];
@@ -122,16 +108,30 @@ export class TimelineProfileComponent implements OnInit {
   postComment(postId){
     this.commentService.postComment(this.id, postId, this.comment).subscribe(
       (data) => {
-        this.post = data;
-      }
-    )
-    for (let index = 0; index < this.posts.length; index++) {
-      if(this.posts[index].id == this.post.id){
-        this.posts[index] = this.post
+        this.posts.find(post => post.id == postId).comments.push(data);
+        })
+        this.comment.content = "";
       }
 
-    }
+  upPost():void{
+    this.profilePostService.createpost(this.post,this.id).
+    then(res =>{
+      this.posts.push(res);
+      this.posts = this.posts.reverse();
+      this.post.content ="";
+    }).catch(e => {
+      console.log("ko dang dc");
+    })
   }
 
+  onChange(value) {
+    this.comment.content = value;
+  }
 
+  deletePost(id){
+    this.profilePostService.deletePost(id).subscribe(
+      (data) => {
+       this.getAllPostByUser();
+      })
+  }
 }
