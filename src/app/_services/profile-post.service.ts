@@ -35,4 +35,8 @@ export class ProfilePostService {
   editPost(id, post): Observable<any>{
     return this.http.put(API_URL+ 'updatePost/'+ id, JSON.stringify(post), httpOptions)
   }
+
+  deletePost(id): Observable<any>{
+    return this.http.delete(API_URL+ 'deletePost/' + id, httpOptions)
+  }
 }
