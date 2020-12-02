@@ -1,7 +1,8 @@
 import { HttpEventType, HttpResponse } from '@angular/common/http';
 import { Component, Input, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Observable } from 'rxjs';
+import { Identifier } from 'typescript';
 import { CommentService } from '../_services/comment.service';
 import { PostService } from '../_services/post.service';
 import { ProfilePostService } from '../_services/profile-post.service';
@@ -15,16 +16,19 @@ import { UserService } from '../_services/user.service';
 })
 export class TimelineFriendProfileComponent implements OnInit {
 
+  @Input() id;
 
   post: any = {
   };
-  @Input() comment: any = {
+  comment: any = {
     content: ''
   };
   roles: string[] = [];
-  user: any = {};
   isLoggedIn = false;
-  id =  this.tokenStorage.getUser().id;
+  idSearch:any;
+  userSearch: any = {};
+  idUserCurrent: number= this.tokenStorage.getUser().id;
+  userCurrent: any = {};
   progressInfos: any =[];
   fileInfos: Observable<any>;
   selectedFiles: FileList;
@@ -36,19 +40,33 @@ export class TimelineFriendProfileComponent implements OnInit {
     private service: PostService,
     private profilePostService: ProfilePostService,
     private router: Router,
-    private commentService: CommentService
-  ) { }
-
-  ngOnInit(): void {
-    this.userService.getUserById(this.id).subscribe(
+    private commentService: CommentService,
+    private actRoute: ActivatedRoute
+  ) {
+    this.idSearch = parseInt(this.actRoute.snapshot.params.id);
+    this.userService.getUserById(this.idSearch).subscribe(
       data => {
-        this.user = data;
+        this.userSearch = data;
       },
       err => {
-        this.user = JSON.parse(err.error).message;
+        this.userSearch = JSON.parse(err.error).message;
+      }
+    );
+
+    this.userService.getUserById(this.idUserCurrent).subscribe(
+      data => {
+        this.userCurrent = data;
+      },
+      err => {
+        this.userCurrent = JSON.parse(err.error).message;
       }
     );
     this.getAllPostByUser();
+  }
+
+  ngOnInit(): void {
+
+
     }
 
   upload(idx, file): void {
@@ -68,43 +86,43 @@ export class TimelineFriendProfileComponent implements OnInit {
     }
 
 
-  upPost():void{
-    this.profilePostService.createpost(this.post,this.id).
-    then(res =>{
-      this.posts.push(res);
-      this.posts = this.posts.reverse();
-      this.post.content ="";
-    }).catch(e => {
-      console.log("ko dang dc");
-    })
-  }
+  // upPost():void{
+  //   this.profilePostService.createpost(this.post,this.id).
+  //   then(res =>{
+  //     this.posts.push(res);
+  //     this.posts = this.posts.reverse();
+  //     this.post.content ="";
+  //   }).catch(e => {
+  //     console.log("ko dang dc");
+  //   })
+  // }
 
-  selectFiles(event): void {
-    this.progressInfos = [];
-    const files = event.target.files;    let isImage = true;
-    for (let i = 0; i < files.length; i++) {
-      if (files.item(i).type.match('image.*')) {
-        continue;
-      } else {
-        isImage = false;
-        alert('invalid format!');
-        break;
-      }
-    }
+  // selectFiles(event): void {
+  //   this.progressInfos = [];
+  //   const files = event.target.files;    let isImage = true;
+  //   for (let i = 0; i < files.length; i++) {
+  //     if (files.item(i).type.match('image.*')) {
+  //       continue;
+  //     } else {
+  //       isImage = false;
+  //       alert('invalid format!');
+  //       break;
+  //     }
+  //   }
 
-    if (isImage) {
-      this.selectedFiles = event.target.files;
-    } else {
-      this.selectedFiles = undefined;
-       event.srcElement.percentage = null;
-    }
-    for (let i = 0; i < this.selectedFiles.length; i++) {
-      this.upload(i, this.selectedFiles[i]);
-    }
-  }
+  //   if (isImage) {
+  //     this.selectedFiles = event.target.files;
+  //   } else {
+  //     this.selectedFiles = undefined;
+  //      event.srcElement.percentage = null;
+  //   }
+  //   for (let i = 0; i < this.selectedFiles.length; i++) {
+  //     this.upload(i, this.selectedFiles[i]);
+  //   }
+  // }
 
   getAllPostByUser(){
-    this.profilePostService.getAllPostByUser(this.id).subscribe(
+    this.profilePostService.getAllPostByUser(this.idSearch).subscribe(
       (data) =>{
         console.log(data);
         this.posts = data;
@@ -112,26 +130,26 @@ export class TimelineFriendProfileComponent implements OnInit {
     )
   }
 
-  updatePost(post){
-    this.profilePostService.editPost(this.id, post).subscribe(
-      (data) => {
-        this.post = data;
-      }
-    )
+  // updatePost(post){
+  //   this.profilePostService.editPost(this.id, post).subscribe(
+  //     (data) => {
+  //       this.post = data;
+  //     }
+  //   )
+  // }
+
+  onChange(value) {
+    this.comment.content = value;
   }
 
   postComment(postId){
-    this.commentService.postComment(this.id, postId, this.comment).subscribe(
+    debugger
+    this.commentService.postComment(this.idUserCurrent, postId, this.comment).subscribe(
       (data) => {
-        this.post = data;
-      }
-    )
-    for (let index = 0; index < this.posts.length; index++) {
-      if(this.posts[index].id == this.post.id){
-        this.posts[index] = this.post
+        this.posts.find(post => post.id == postId).comments.push(data);
+        })
+        this.comment.content = "";
       }
 
-    }
-  }
 
 }

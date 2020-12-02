@@ -14,86 +14,84 @@ import { PhotoFriendComponent } from './photo-friend/photo-friend.component';
 import { FriendOfFriendComponent } from './friend-of-friend/friend-of-friend.component';
 import { SearchUserComponent } from './search-user/search-user.component';
 
-
 const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
   { path: 'login', component: LayoutLoginPageComponent },
   { path: 'register', component: LayoutRegisterPageComponent },
-  { path: 'timeline', component: LayoutTimelinePageComponent,
+  {
+    path: 'timeline',
+    component: LayoutTimelinePageComponent,
     children: [
       {
-        path:'',
+        path: '',
         redirectTo: 'newfeed',
-        pathMatch: 'full'
+        pathMatch: 'full',
       },
       {
-        path:'search',
+        path: 'search',
         redirectTo: 'search-user',
-        pathMatch: 'full'
-      },{
-        path: 'search', component: SearchUserComponent
-      },{
-        path: 'newfeed', component: NewfeedComponent
-      }
-    ]
+        pathMatch: 'full',
+      },
+      {
+        path: 'search',
+        component: SearchUserComponent,
+      },
+      {
+        path: 'newfeed',
+        component: NewfeedComponent,
+      },
+    ],
   },
-  { path: 'myfriend', component: LayoutHomeFriendPageComponent,
-  children: [
-    {
-      path:'',
-      redirectTo: 'timeline-friend-profile',
-      pathMatch: 'full'
-    },{
-      path:'about',
-      redirectTo: 'about-friend',
-      pathMatch: 'full'
-    },
-    {
-      path:'photo',
-      redirectTo: 'photo-friend',
-      pathMatch: 'full'
-    },
-    {
-      path:'friend',
-      redirectTo: 'friend-of-friend',
-      pathMatch: 'full'
-    },
-    {
-      path: 'timeline-friend-profile', component: TimelineFriendProfileComponent
-    },
-    {
-      path: 'about', component: AboutFriendComponent
-    },
-    {
-      path: 'photo', component: PhotoFriendComponent
-    },
-    {
-      path: 'friend', component: FriendOfFriendComponent
-    }
-  ]
-  },
-  { path: 'profile', component: LayoutHomePageComponent,
+  {
+    path: 'myfriend/:id',
+    component: LayoutHomeFriendPageComponent,
     children: [
-    {
-      path: '',
-      redirectTo: 'newfeed',
-      pathMatch: 'full'
-    },
-    {
-      path: 'newfeed',
-      component: TimelineProfileComponent
-    },
-    {
-      path: 'about',
-      component: AboutComponent
-    }
-  ]
+      {
+        path: '',
+        redirectTo: 'timeline-friend-profile',
+        pathMatch: 'full',
+      },
+      {
+        path: 'timeline-friend-profile/:id',
+        component: TimelineFriendProfileComponent,
+      },
+      {
+        path: 'about',
+        component: AboutFriendComponent,
+      },
+      {
+        path: 'photo/:id',
+        component: PhotoFriendComponent,
+      },
+      {
+        path: 'friend',
+        component: FriendOfFriendComponent,
+      },
+    ],
+  },
+  {
+    path: 'profile',
+    component: LayoutHomePageComponent,
+    children: [
+      {
+        path: '',
+        redirectTo: 'newfeed',
+        pathMatch: 'full',
+      },
+      {
+        path: 'newfeed',
+        component: TimelineProfileComponent,
+      },
+      {
+        path: 'about',
+        component: AboutComponent,
+      },
+    ],
   },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule {
-}
+export class AppRoutingModule {}

@@ -29,7 +29,21 @@ export class UserService {
 
   getall = (): Promise<Object> => {
     return new Promise((resolve, reject) => {
-      let url = `http://localhost:8080//api/users/getAllUser`;
+      let url = `http://localhost:8080/api/users/getAllUser`;
+      this.http.get(url)
+      .subscribe(res =>{
+        resolve(res);
+      }, err => {
+        reject(err);
+      })
+    })
+  }
+
+
+  getalluserbyname = (name): Promise<Object> => {
+    debugger
+    return new Promise((resolve, reject) => {
+      let url = `http://localhost:8080/api/users/searchByName/${name}`;
       this.http.get(url)
       .subscribe(res =>{
         resolve(res);
