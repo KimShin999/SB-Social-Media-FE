@@ -26,6 +26,7 @@ import { CoverFriendComponent } from './cover-friend/cover-friend.component';
 import { AboutFriendComponent } from './about-friend/about-friend.component';
 import { PhotoFriendComponent } from './photo-friend/photo-friend.component';
 import { FriendOfFriendComponent } from './friend-of-friend/friend-of-friend.component';
+import { SearchUserComponent } from './search-user/search-user.component';
 
 @NgModule({
   declarations: [
@@ -48,7 +49,8 @@ import { FriendOfFriendComponent } from './friend-of-friend/friend-of-friend.com
     CoverFriendComponent,
     AboutFriendComponent,
     PhotoFriendComponent,
-    FriendOfFriendComponent
+    FriendOfFriendComponent,
+    SearchUserComponent
   ],
   imports: [
     HttpClientModule,

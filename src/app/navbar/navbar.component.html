@@ -1,166 +1,37 @@
 <div>
     <div class="topbar stick">
         <div class="logo">
-            <a title="" href="newsfeed.html"><img src="../assets/navbar/images/logo2.png" alt=""></a>
+            <label>
+              <a title="" href="newsfeed.html"><img src="../assets/navbar/images/logo.png" alt=""></a>
+            </label>
         </div>
         <div class="top-area">
+          <!-- <div class="user-img">
+            <nav class="navbar navbar-light bg-light">
+              <form class="form-inline">
+                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+              </form>
+            </nav>
+          </div> -->
           <div class="user-img">
-            <button class="btn btn-outline-light" style="border-radius: 20px; margin-bottom: 8px; width: 100px; height: 40px;">
+            <button (click)="gotomypage()" class="btn btn-outline-light" style="border-radius: 20px; margin-bottom: 8px; width: auto; height: 40px;">
               <label>
                 <img src="{{user.avatar}}" alt="" style=" width: 25px; height: 25px; border-radius: 50%;">
-                <label style="color: black; margin-left: 8px; ">Tên user</label>
+                <label style="color: blue; margin-left: 8px; ">{{user.username}}</label>
               </label>
             </button>
           </div>
-            <ul class="setting-area">
+            <ul class="setting-area" >
                 <li>
-                    <a href="#" title="Home" data-ripple=""><i class="ti-search"></i></a>
-                    <div class="searched">
-                        <form method="post" class="form-search">
-                            <input type="text" placeholder="Search Friend">
-                            <button data-ripple><i class="ti-search"></i></button>
-                        </form>
-                    </div>
-                </li>
-                <li><a href="newsfeed.html" title="Home" data-ripple=""><i class="ti-home"></i></a></li>
-                <li>
-                    <a href="#" title="Notification" data-ripple="">
-                        <i class="ti-bell"></i><span>20</span>
-                    </a>
-                    <div class="dropdowns">
-                        <span>4 New Notifications</span>
-                        <ul class="drops-menu">
-                            <li>
-                                <a href="notifications.html" title="">
-                                    <img src="../assets/navbar/images/resources/thumb-1.jpg" alt="">
-                                    <div class="mesg-meta">
-                                        <h6>sarah Loren</h6>
-                                        <span>Hi, how r u dear ...?</span>
-                                        <i>2 min ago</i>
-                                    </div>
-                                </a>
-                                <span class="tag green">New</span>
-                            </li>
-                            <li>
-                                <a href="notifications.html" title="">
-                                    <img src="../assets/navbar/images/resources/thumb-2.jpg" alt="">
-                                    <div class="mesg-meta">
-                                        <h6>Jhon doe</h6>
-                                        <span>Hi, how r u dear ...?</span>
-                                        <i>2 min ago</i>
-                                    </div>
-                                </a>
-                                <span class="tag red">Reply</span>
-                            </li>
-                            <li>
-                                <a href="notifications.html" title="">
-                                    <img src="../assets/navbar/images/resources/thumb-3.jpg" alt="">
-                                    <div class="mesg-meta">
-                                        <h6>Andrew</h6>
-                                        <span>Hi, how r u dear ...?</span>
-                                        <i>2 min ago</i>
-                                    </div>
-                                </a>
-                                <span class="tag blue">Unseen</span>
-                            </li>
-                            <li>
-                                <a href="notifications.html" title="">
-                                    <img src="../assets/navbar/images/resources/thumb-4.jpg" alt="">
-                                    <div class="mesg-meta">
-                                        <h6>Tom cruse</h6>
-                                        <span>Hi, how r u dear ...?</span>
-                                        <i>2 min ago</i>
-                                    </div>
-                                </a>
-                                <span class="tag">New</span>
-                            </li>
-                            <li>
-                                <a href="notifications.html" title="">
-                                    <img src="../assets/navbar/images/resources/thumb-5.jpg" alt="">
-                                    <div class="mesg-meta">
-                                        <h6>Amy</h6>
-                                        <span>Hi, how r u dear ...?</span>
-                                        <i>2 min ago</i>
-                                    </div>
-                                </a>
-                                <span class="tag">New</span>
-                            </li>
-                        </ul>
-                        <a href="notifications.html" title="" class="more-mesg">view more</a>
-                    </div>
-                </li>
-                <li>
-                    <a href="#" title="Messages" data-ripple=""><i class="ti-comment"></i><span>12</span></a>
-                    <div class="dropdowns">
-                        <span>5 New Messages</span>
-                        <ul class="drops-menu">
-                            <li>
-                                <a href="notifications.html" title="">
-                                    <img src="../assets/navbar/images/resources/thumb-1.jpg" alt="">
-                                    <div class="mesg-meta">
-                                        <h6>sarah Loren</h6>
-                                        <span>Hi, how r u dear ...?</span>
-                                        <i>2 min ago</i>
-                                    </div>
-                                </a>
-                                <span class="tag green">New</span>
-                            </li>
-                            <li>
-                                <a href="notifications.html" title="">
-                                    <img src="../assets/navbar/images/resources/thumb-2.jpg" alt="">
-                                    <div class="mesg-meta">
-                                        <h6>Jhon doe</h6>
-                                        <span>Hi, how r u dear ...?</span>
-                                        <i>2 min ago</i>
-                                    </div>
-                                </a>
-                                <span class="tag red">Reply</span>
-                            </li>
-                            <li>
-                                <a href="notifications.html" title="">
-                                    <img src="../assets/navbar/images/resources/thumb-3.jpg" alt="">
-                                    <div class="mesg-meta">
-                                        <h6>Andrew</h6>
-                                        <span>Hi, how r u dear ...?</span>
-                                        <i>2 min ago</i>
-                                    </div>
-                                </a>
-                                <span class="tag blue">Unseen</span>
-                            </li>
-                            <li>
-                                <a href="notifications.html" title="">
-                                    <img src="../assets/navbar/images/resources/thumb-4.jpg" alt="">
-                                    <div class="mesg-meta">
-                                        <h6>Tom cruse</h6>
-                                        <span>Hi, how r u dear ...?</span>
-                                        <i>2 min ago</i>
-                                    </div>
-                                </a>
-                                <span class="tag">New</span>
-                            </li>
-                            <li>
-                                <a href="notifications.html" title="">
-                                    <img src="../assets/navbar/images/resources/thumb-5.jpg" alt="">
-                                    <div class="mesg-meta">
-                                        <h6>Amy</h6>
-                                        <span>Hi, how r u dear ...?</span>
-                                        <i>2 min ago</i>
-                                    </div>
-                                </a>
-                                <span class="tag">New</span>
-                            </li>
-                        </ul>
-                        <a href="messages.html" title="" class="more-mesg">view more</a>
-                    </div>
-                </li>
-                <li>
-                    <button class="btn btn-outline-light" style="border-radius: 50%;">
-                      <a href="#" title="Languages" data-ripple=""><i class="fa fa-globe" style="color:blue;"></i></a>
-                    </button>
+                  <button (click)="gototimeline()" class="btn btn-outline-light" style="border-radius: 50%; margin-left: 10px;">
+                  <a title="Home" data-ripple=""><i class="ti-home" style="color: blue;"></i></a>
+                  </button>
+                  <button (click)="gotosearchuser()" class="btn btn-outline-light" style="border-radius: 50%;  margin-left: 10px;">
+                    <a title="search" data-ripple=""><i class="ti ti-search" style="color: blue;"></i></a>
+                  </button>
                 </li>
             </ul>
-
         </div>
     </div>
-
 </div>

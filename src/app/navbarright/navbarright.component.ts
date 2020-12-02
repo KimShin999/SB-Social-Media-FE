@@ -1,4 +1,5 @@
 import {Component, OnInit} from '@angular/core';
+import { UserService } from '../_services/user.service';
 
 @Component({
   selector: 'app-navbarright',
@@ -7,10 +8,19 @@ import {Component, OnInit} from '@angular/core';
 })
 export class NavbarrightComponent implements OnInit {
 
-  constructor() {
+  listusers: any = [];
+
+  constructor( private userService: UserService,) {
+
   }
 
   ngOnInit(): void {
+
   }
+
+  getListUser(){
+
+  }
+
 
 }
