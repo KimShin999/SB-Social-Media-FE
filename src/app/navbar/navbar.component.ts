@@ -27,11 +27,23 @@ export class NavbarComponent implements OnInit {
       data => {
         this.user = data;
         console.log(this.user);
-        
+
       },
       err => {
         this.user = JSON.parse(err.error).message;
       }
     );
+    }
+
+    gotomypage(){
+      this.router.navigateByUrl('/profile')
+    }
+
+    gototimeline(){
+      this.router.navigateByUrl('/timeline')
+    }
+
+    gotosearchuser(){
+      this.router.navigateByUrl('/timeline/search')
     }
 }

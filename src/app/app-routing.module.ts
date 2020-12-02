@@ -12,13 +12,31 @@ import { TimelineFriendProfileComponent } from './timeline-friend-profile/timeli
 import { AboutFriendComponent } from './about-friend/about-friend.component';
 import { PhotoFriendComponent } from './photo-friend/photo-friend.component';
 import { FriendOfFriendComponent } from './friend-of-friend/friend-of-friend.component';
+import { SearchUserComponent } from './search-user/search-user.component';
 
 
 const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
   { path: 'login', component: LayoutLoginPageComponent },
   { path: 'register', component: LayoutRegisterPageComponent },
-  { path: 'timeline', component: LayoutTimelinePageComponent },
+  { path: 'timeline', component: LayoutTimelinePageComponent,
+    children: [
+      {
+        path:'',
+        redirectTo: 'newfeed',
+        pathMatch: 'full'
+      },
+      {
+        path:'search',
+        redirectTo: 'search-user',
+        pathMatch: 'full'
+      },{
+        path: 'search', component: SearchUserComponent
+      },{
+        path: 'newfeed', component: NewfeedComponent
+      }
+    ]
+  },
   { path: 'myfriend', component: LayoutHomeFriendPageComponent,
   children: [
     {
