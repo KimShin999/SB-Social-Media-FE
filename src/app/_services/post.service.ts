@@ -36,4 +36,19 @@ export class PostService {
   getFiles(): Observable<any> {
     return this.http.get(`${this.baseUrl}`);
   }
+
+  //thuong them
+   getGlobalPost = (): Promise<Object> => {
+        return new Promise((resolve, reject) => {
+            let url = `http://localhost:8080/api/posts/`;
+            this.http.get(url)
+                .subscribe(res => {
+                    resolve(res);
+                }, err => {
+                  window.alert("service loi");
+                    reject(err);
+                })
+        })
+      }
+    //
 }
