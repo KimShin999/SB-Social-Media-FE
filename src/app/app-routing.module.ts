@@ -76,11 +76,11 @@ const routes: Routes = [
     children: [
     {
       path: '',
-      redirectTo: 'newfeed',
+      redirectTo: 'newfeed-profile',
       pathMatch: 'full'
     },
     {
-      path: 'newfeed',
+      path: 'newfeed-profile',
       component: TimelineProfileComponent
     },
     {
