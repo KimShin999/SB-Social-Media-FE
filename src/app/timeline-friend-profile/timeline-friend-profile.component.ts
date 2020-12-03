@@ -143,7 +143,6 @@ export class TimelineFriendProfileComponent implements OnInit {
   }
 
   postComment(postId){
-    debugger
     this.commentService.postComment(this.idUserCurrent, postId, this.comment).subscribe(
       (data) => {
         this.posts.find(post => post.id == postId).comments.push(data);

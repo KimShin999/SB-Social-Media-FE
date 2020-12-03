@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { RelationshipService } from '../_services/relationship.service';
+import { TokenStorageService } from '../_services/token-storage.service';
 import { UserService } from '../_services/user.service';
 
 @Component({
@@ -15,7 +17,13 @@ export class SearchUserComponent implements OnInit {
 
   message: string = '';
 
-  constructor(public router: Router, private service: UserService) { }
+
+  idUserCurrent=  this.tokenStorage.getUser().id;
+
+  constructor(public router: Router,
+    private service: UserService,
+    private tokenStorage: TokenStorageService
+    ) { }
 
   ngOnInit(): void {
   }
@@ -27,7 +35,7 @@ export class SearchUserComponent implements OnInit {
 
   getalluserbyusername(name){
     debugger
-    this.service.getalluserbyname(name)
+    this.service.getalluserbyname(name, this.idUserCurrent)
       .then(res => {
         this.listUser = res;
         if(this.listUser.length == 0){

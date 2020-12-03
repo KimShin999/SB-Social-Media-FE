@@ -52,7 +52,6 @@ export class NewfeedComponent implements OnInit {
     this.getAllGlobalPost();
   }
   upload(idx, file): void {
-    debugger
     this.progressInfos[idx] = { value: 0, fileName: file.name };
     this.service.upload(file).subscribe(
       event => {
@@ -77,7 +76,6 @@ export class NewfeedComponent implements OnInit {
       })
   }
   selectFiles(event): void {
-    debugger
     this.progressInfos = [];
     const files = event.target.files; let isImage = true;
     for (let i = 0; i < files.length; i++) {
@@ -122,7 +120,6 @@ export class NewfeedComponent implements OnInit {
   }
 
   getAllGlobalPost() {
-    debugger
     this.service.getGlobalPost()
       .then(res => {
         this.listGlobalPost = res;
@@ -130,6 +127,5 @@ export class NewfeedComponent implements OnInit {
       }).catch(e => {
         alert('Connection Error !');
       })
-    alert("ok");
   }
 }

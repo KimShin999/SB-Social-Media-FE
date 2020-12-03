@@ -7,10 +7,6 @@
                 <a href="newsfeed.html" title="">News feed</a>
             </li>
             <li>
-                <i class="ti-mouse-alt"></i>
-                <a href="inbox.html" title="">Inbox</a>
-            </li>
-            <li>
                 <i class="ti-files"></i>
                 <a href="fav-page.html" title="">My pages</a>
             </li>
@@ -23,24 +19,8 @@
                 <a href="timeline-photos.html" title="">images</a>
             </li>
             <li>
-                <i class="ti-video-camera"></i>
-                <a href="timeline-videos.html" title="">videos</a>
-            </li>
-            <li>
-                <i class="ti-comments-smiley"></i>
-                <a href="messages.html" title="">Messages</a>
-            </li>
-            <li>
                 <i class="ti-bell"></i>
                 <a href="notifications.html" title="">Notifications</a>
-            </li>
-            <li>
-                <i class="ti-share"></i>
-                <a href="people-nearby.html" title="">People Nearby</a>
-            </li>
-            <li>
-                <i class="fa fa-bar-chart-o"></i>
-                <a href="insights.html" title="">insights</a>
             </li>
             <li>
                 <i class="ti-power-off"></i>
@@ -48,5 +28,25 @@
             </li>
         </ul>
     </div>
-    <!-- Shortcuts -->
+
+
+    <div class="widget">
+      <h4 class="widget-title">Lời mời kết bạn</h4>
+      <div class="tab-content">
+          <ul class="nearby-contct" *ngFor="let friendRequest of listFriendRequest">
+            <li >
+              <div class="nearly-pepls">
+                <figure>
+                  <a (click)="homefriend(friendRequest.firstUser.id)" title=""><img src={{friendRequest.firstUser.avatar}} alt=""></a>
+                </figure>
+                <div class="pepl-info">
+                  <h4><a (click)="homefriend(friendRequest.firstUser.id)" title="">{{friendRequest.firstUser.username}}</a></h4>
+                  <span>ftv model</span>
+                </div>
+              </div>
+            </li>
+        </ul>
+
+      </div>
+  </div>
 </aside>
