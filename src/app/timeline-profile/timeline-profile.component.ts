@@ -13,7 +13,7 @@ import { CommentService } from '../_services/comment.service';
   styleUrls: ['./timeline-profile.component.css']
 })
 export class TimelineProfileComponent implements OnInit {
-  
+
   post: any = {
   };
   comment: any = {
@@ -76,7 +76,7 @@ export class TimelineProfileComponent implements OnInit {
         break;
       }
     }
-    
+
     if (isImage) {
       this.selectedFiles = event.target.files;
     } else {
@@ -111,7 +111,7 @@ export class TimelineProfileComponent implements OnInit {
         this.posts.find(post => post.id == postId).comments.push(data);
         })
         this.comment.content = "";
-      }
+  }
 
   upPost():void{
     this.profilePostService.createpost(this.post,this.id).

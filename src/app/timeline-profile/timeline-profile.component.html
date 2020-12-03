@@ -137,8 +137,8 @@
                         </div>
                         <div class="post-comt-box">
                             <form method="post">
-                                <input placeholder="Post your comment" name="content" (change)="onChange($event.target.value)" [value]="comment.content">
-                                <button type="submit" (click)="postComment(post.id)" class="btn btn-dark">Comment</button>
+                                <input class="form-control" placeholder="Post your comment" name="content" (change)="onChange($event.target.value)" [value]="comment.content">
+                                <button type="submit" (click)="postComment(post.id)" class="btn btn-dark" hidden>Comment</button>
                             </form>
                         </div>
                     </li>

@@ -39,6 +39,7 @@ export class PostService {
 
   //thuong them
    getGlobalPost = (): Promise<Object> => {
+     debugger
         return new Promise((resolve, reject) => {
             let url = `http://localhost:8080/api/posts/`;
             this.http.get(url)

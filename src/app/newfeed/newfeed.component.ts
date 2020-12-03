@@ -122,6 +122,7 @@ export class NewfeedComponent implements OnInit {
   }
 
   getAllGlobalPost() {
+    debugger
     this.service.getGlobalPost()
       .then(res => {
         this.listGlobalPost = res;

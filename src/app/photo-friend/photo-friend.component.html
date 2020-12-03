@@ -1,1 +1,15 @@
-<p>photo-friend works!</p>
+<p>{{idSearch}}</p>
+<div class="central-meta">
+  <ul class="photos">
+    <div *ngFor="let post of posts">
+    <div *ngFor="let image of post.images">
+      <li>
+          <img src="{{image.img}}" alt="">
+      </li>
+    </div>
+  </div>
+  </ul>
+  <div class="lodmore">
+    <button class="btn-view btn-load-more"></button>
+  </div>
+</div><!-- photos -->

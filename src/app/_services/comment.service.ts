@@ -19,6 +19,7 @@ export class CommentService {
   ) { }
 
   postComment(userId, id, comment): Observable<any>{
+    debugger
     return this.http.post(API_URL + 'postComment/' + userId +'/'+ id, JSON.stringify(comment), httpOptions)
   }
 
