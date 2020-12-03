@@ -32,7 +32,7 @@
                     <img src="{{post.appUser.avatar}}" alt="">
                 </figure>
                 <div class="friend-name">
-                    <ins><a href="time-line.html" title="">{{user.username}}</a></ins>
+                    <ins><a href="time-line.html" title="">{{user.firstName}}</a></ins>
                     <span>published: june,2 2018 19:PM</span>
                     <div class="dropdown">
                         <button style="float: right;" type="button" class="btn btn-outline-primary" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -84,7 +84,9 @@
                         <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
                             <div class="carousel-inner">
                                 <div class="carousel-item" [ngClass]="{active: i == 0}" *ngFor="let image of post.images;index as i">
-                                    <img class="d-block w-100" src="{{image.img}}" alt="First slide">
+                                    <a class="strip" href="{{image.img}}" title="" data-strip-group="mygroup" data-strip-group-options="loop: false">
+                                        <img class="d-block w-100" src="{{image.img}}" alt="First slide" style="height: 500px; ">
+                                    </a>
                                 </div>
                             </div>
                             <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
@@ -123,7 +125,7 @@
                         </div>
                         <div class="we-comment">
                             <div class="coment-head">
-                                <h5><a href="time-line.html" title="">{{comment.user.username}}</a></h5>
+                                <h5><a href="time-line.html" title="">{{comment.user.firstName}}</a></h5>
                                 <span>1 year ago</span>
                                 <a class="we-reply" title="Reply" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-caret-down"></i></a>
                                 <div class="dropdown show">
