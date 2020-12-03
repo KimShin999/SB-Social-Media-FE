@@ -43,7 +43,6 @@ const routes: Routes = [
       },
     ],
   },
-<<<<<<< HEAD
   {
     path: 'myfriend/:id',
     component: LayoutHomeFriendPageComponent,
@@ -70,28 +69,6 @@ const routes: Routes = [
         component: FriendOfFriendComponent,
       },
     ],
-=======
-  { path: 'myfriend', component: LayoutHomeFriendPageComponent,
-  children: [
-    {
-      path:'',
-      redirectTo: 'timeline-friend-profile',
-      pathMatch: 'full'
-    },
-    {
-      path: 'timeline-friend-profile', component: TimelineFriendProfileComponent
-    },
-    {
-      path: 'about', component: AboutFriendComponent
-    },
-    {
-      path: 'photo', component: PhotoFriendComponent
-    },
-    {
-      path: 'friend', component: FriendOfFriendComponent
-    }
-  ]
->>>>>>> 4eba76be6359c7b65a6c9085caa86b85d7759b5a
   },
   {
     path: 'profile',

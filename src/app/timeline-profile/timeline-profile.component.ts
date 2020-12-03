@@ -49,7 +49,7 @@ export class TimelineProfileComponent implements OnInit {
     );
     this.getAllPostByUser();
     }
-    
+
   upload(idx, file): void {
     debugger
     this.progressInfos[idx] = { value: 0, fileName: file.name };
@@ -97,7 +97,7 @@ export class TimelineProfileComponent implements OnInit {
         this.posts = data;
       }
     )
-  } 
+  }
 
   updatePost(post){
     this.profilePostService.editPost(this.id, post).subscribe(
@@ -140,9 +140,6 @@ export class TimelineProfileComponent implements OnInit {
        this.getAllPostByUser();
       })
   }
-<<<<<<< HEAD
-}
-=======
 
   editComment(comment){
     this.commentService.updateComment(comment,this.id).subscribe(
@@ -160,4 +157,3 @@ export class TimelineProfileComponent implements OnInit {
     )
   }
 }
->>>>>>> 4eba76be6359c7b65a6c9085caa86b85d7759b5a
