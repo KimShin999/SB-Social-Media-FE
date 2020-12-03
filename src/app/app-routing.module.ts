@@ -13,6 +13,7 @@ import { AboutFriendComponent } from './about-friend/about-friend.component';
 import { PhotoFriendComponent } from './photo-friend/photo-friend.component';
 import { FriendOfFriendComponent } from './friend-of-friend/friend-of-friend.component';
 import { SearchUserComponent } from './search-user/search-user.component';
+import { PhotoComponent } from './photo/photo.component';
 
 
 const routes: Routes = [
@@ -43,20 +44,6 @@ const routes: Routes = [
       path:'',
       redirectTo: 'timeline-friend-profile',
       pathMatch: 'full'
-    },{
-      path:'about',
-      redirectTo: 'about-friend',
-      pathMatch: 'full'
-    },
-    {
-      path:'photo',
-      redirectTo: 'photo-friend',
-      pathMatch: 'full'
-    },
-    {
-      path:'friend',
-      redirectTo: 'friend-of-friend',
-      pathMatch: 'full'
     },
     {
       path: 'timeline-friend-profile', component: TimelineFriendProfileComponent
@@ -86,6 +73,10 @@ const routes: Routes = [
     {
       path: 'about',
       component: AboutComponent
+    },
+    {
+      path:'photo',
+       component:PhotoComponent
     }
   ]
   },

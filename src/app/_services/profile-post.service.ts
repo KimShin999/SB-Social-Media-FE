@@ -39,4 +39,6 @@ export class ProfilePostService {
   deletePost(id): Observable<any>{
     return this.http.delete(API_URL+ 'deletePost/' + id, httpOptions)
   }
+
+
 }
