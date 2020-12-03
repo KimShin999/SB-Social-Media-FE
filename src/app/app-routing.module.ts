@@ -13,6 +13,7 @@ import { AboutFriendComponent } from './about-friend/about-friend.component';
 import { PhotoFriendComponent } from './photo-friend/photo-friend.component';
 import { FriendOfFriendComponent } from './friend-of-friend/friend-of-friend.component';
 import { SearchUserComponent } from './search-user/search-user.component';
+import { PhotoComponent } from './photo/photo.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
@@ -42,6 +43,7 @@ const routes: Routes = [
       },
     ],
   },
+<<<<<<< HEAD
   {
     path: 'myfriend/:id',
     component: LayoutHomeFriendPageComponent,
@@ -68,6 +70,28 @@ const routes: Routes = [
         component: FriendOfFriendComponent,
       },
     ],
+=======
+  { path: 'myfriend', component: LayoutHomeFriendPageComponent,
+  children: [
+    {
+      path:'',
+      redirectTo: 'timeline-friend-profile',
+      pathMatch: 'full'
+    },
+    {
+      path: 'timeline-friend-profile', component: TimelineFriendProfileComponent
+    },
+    {
+      path: 'about', component: AboutFriendComponent
+    },
+    {
+      path: 'photo', component: PhotoFriendComponent
+    },
+    {
+      path: 'friend', component: FriendOfFriendComponent
+    }
+  ]
+>>>>>>> 4eba76be6359c7b65a6c9085caa86b85d7759b5a
   },
   {
     path: 'profile',
@@ -85,6 +109,10 @@ const routes: Routes = [
     {
       path: 'about',
       component: AboutComponent
+    },
+    {
+      path:'photo',
+       component:PhotoComponent
     }
   ]
   },

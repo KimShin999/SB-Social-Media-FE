@@ -7,6 +7,7 @@ import { Observable } from 'rxjs';
 import { TokenStorageService } from '../_services/token-storage.service';
 import { UserService } from '../_services/user.service';
 import { CommentService } from '../_services/comment.service';
+
 @Component({
   selector: 'app-timeline-profile',
   templateUrl: './timeline-profile.component.html',
@@ -48,6 +49,7 @@ export class TimelineProfileComponent implements OnInit {
     );
     this.getAllPostByUser();
     }
+    
   upload(idx, file): void {
     debugger
     this.progressInfos[idx] = { value: 0, fileName: file.name };
@@ -95,12 +97,12 @@ export class TimelineProfileComponent implements OnInit {
         this.posts = data;
       }
     )
-  }
+  } 
 
   updatePost(post){
     this.profilePostService.editPost(this.id, post).subscribe(
       (data) => {
-        this.post = data;
+        // this.post = data;
       }
     )
   }
@@ -128,10 +130,34 @@ export class TimelineProfileComponent implements OnInit {
     this.comment.content = value;
   }
 
+  editContent(value){
+    this.comment = value
+  }
+
   deletePost(id){
     this.profilePostService.deletePost(id).subscribe(
       (data) => {
        this.getAllPostByUser();
       })
   }
+<<<<<<< HEAD
 }
+=======
+
+  editComment(comment){
+    this.commentService.updateComment(comment,this.id).subscribe(
+      (data) =>{
+        console.log(data);
+      }
+    )
+  }
+
+  deleteComment(id){
+    this.commentService.deleteComment(this.id,id).subscribe(
+      (data) =>{
+        this.getAllPostByUser();
+      }
+    )
+  }
+}
+>>>>>>> 4eba76be6359c7b65a6c9085caa86b85d7759b5a

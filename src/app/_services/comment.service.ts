@@ -22,6 +22,13 @@ export class CommentService {
     debugger
     return this.http.post(API_URL + 'postComment/' + userId +'/'+ id, JSON.stringify(comment), httpOptions)
   }
+  updateComment(comment,idUser): Observable<any>{
+    return this.http.put(API_URL+ 'updateComment/'+ idUser, JSON.stringify(comment),httpOptions)
+  }
+
+  deleteComment(idUser, commentId){
+    return this.http.delete(API_URL+ 'deleteComment/' +idUser+ '/'+commentId, httpOptions)
+  }
 
 
 }

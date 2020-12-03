@@ -55,7 +55,7 @@ import { SearchUserComponent } from './search-user/search-user.component';
     BrowserModule,
     AppRoutingModule,
     NgbModule,
-    FormsModule
+    FormsModule,
   ],
   providers: [authInterceptorProviders],
   bootstrap: [AppComponent]
