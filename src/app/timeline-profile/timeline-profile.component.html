@@ -6,7 +6,7 @@
             </figure>
             <div class="newpst-input">
                 <form method="post">
-                    <textarea rows="2" [(ngModel)]="post.content" name="content" placeholder="write something"></textarea>
+                    <textarea rows="2" [(ngModel)]="post.content" name="post-content" placeholder="write something"></textarea>
                     <div class="attachments">
                         <ul>
                             <li>
@@ -29,7 +29,7 @@
         <div class="user-post" *ngFor="let post of posts">
             <div class="friend-info">
                 <figure>
-                    <img src="{{user.avatar}}" alt="">
+                    <img src="{{post.appUser.avatar}}" alt="">
                 </figure>
                 <div class="friend-name">
                     <ins><a href="time-line.html" title="">{{user.username}}</a></ins>
@@ -41,34 +41,36 @@
                           </svg>
                         </button>
                         <div class="dropdown-menu">
-                            <a class="dropdown-item" href="#" data-toggle="modal" data-target="#exampleModal1">Edit Post</a>
+                            <a class="dropdown-item" data-toggle="modal" [attr.data-target]="'#'+post.id">Edit Post</a>
                             <a class="dropdown-item" (click)="deletePost(post.id)">Delete Post</a>
                         </div>
-                    </div>
-                    <!-- modal -->
-                    <div class="modal fade" id="exampleModal1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                        <div class="modal-dialog" role="document">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                              </button>
-                                </div>
-                                <div class="modal-body">
-                                    <div class="form-group">
-                                        <label for="exampleFormControlTextarea1">Example textarea</label>
-                                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" [(ngModel)]="post.content"></textarea>
+
+                        <!-- modal -->
+                        <div class="modal fade" [attr.id]="post.id" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
                                     </div>
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                    <button type="button" class="btn btn-primary" (click)="updatePost(post)">Save changes</button>
+                                    <div class="modal-body">
+                                        <div class="form-group">
+                                            <label for="exampleFormControlTextarea1">Example textarea</label>
+                                            <textarea class="form-control" id="exampleFormControlTextarea1" name="content" [(ngModel)]="post.content"></textarea>
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                        <button type="button" class="btn btn-primary" (click)="updatePost(post)">Save changes</button>
+                                    </div>
                                 </div>
                             </div>
                         </div>
+                        <!-- modal -->
+
                     </div>
-                    <!-- modal -->
                 </div>
                 <div class="post-meta">
                     <div class="description">
@@ -123,7 +125,39 @@
                             <div class="coment-head">
                                 <h5><a href="time-line.html" title="">{{comment.user.username}}</a></h5>
                                 <span>1 year ago</span>
-                                <a class="we-reply" href="#" title="Reply"><i class="fa fa-reply"></i></a>
+                                <a class="we-reply" title="Reply" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-caret-down"></i></a>
+                                <div class="dropdown show">
+                                    <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                        <a class="dropdown-item" data-toggle="modal" [attr.data-target]="'#'+comment.id">Edit Comment</a>
+                                        <a class="dropdown-item" (click)="deleteComment(comment.id)">Delete Comment</a>
+                                    </div>
+                                </div>
+
+                                <!-- Modal -->
+                                <div class="modal fade" [attr.id]="comment.id" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="exampleModalLabel">Edit Comment</h5>
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                     <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <div class="form-group">
+                                                    <label for="exampleFormControlTextarea1">Example textarea</label>
+                                                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="comment-content" [(ngModel)]="comment.content"></textarea>
+                                                </div>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                <button type="button" class="btn btn-primary" (click)="editComment(comment)">Edit Comment</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Modal -->
+
                             </div>
                             <p>{{comment.content}}</p>
                         </div>
@@ -137,8 +171,8 @@
                         </div>
                         <div class="post-comt-box">
                             <form method="post">
-                                <input placeholder="Post your comment" name="content" (change)="onChange($event.target.value)" [value]="comment.content">
-                                <button type="submit" (click)="postComment(post.id)" class="btn btn-dark">Comment</button>
+                                <input placeholder="Post your comment" class="form-control" name="content" (change)="onChange($event.target.value)" [value]="comment.content">
+                                <button type="submit" (click)="postComment(post.id)" hidden>Comment</button>
                             </form>
                         </div>
                     </li>

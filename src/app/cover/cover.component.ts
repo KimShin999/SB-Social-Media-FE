@@ -49,6 +49,22 @@ export class CoverComponent implements OnInit {
     this.onUpload();
   }
 
+  public onFileChangedCover(event){
+    this.selectedFile = event.target.files[0];
+    this.uploadCover();
+  }
+
+  uploadCover(){
+    const coverImg = new FormData();
+    coverImg.append('imageFile', this.selectedFile, this.selectedFile.name);
+    this.http.put('http://localhost:8080/api/users/updateCover/' + this.id, coverImg, { observe: 'response' })
+    .subscribe((response) => {
+      console.log(response);
+      this.user = response.body;
+    }
+    );
+  }
+
   onUpload() {
     console.log(this.selectedFile);
     debugger
