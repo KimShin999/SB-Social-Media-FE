@@ -42,6 +42,20 @@
                             <div class="line"></div> <small class="or text-center">Or</small>
                             <div class="line"></div>
                         </div>
+
+                        <div class="row px-3">
+                          <label class="mb-1">
+                          <tr>
+                            <td style="width:285px"> <h6 class="mb-0 text-sm">Frist Name</h6></td>
+                            <td style="width:285px"> <h6 class="mb-0 text-sm">Last Name</h6></td>
+                          </tr>
+                          <tr>
+                            <td><input class="mb-4" type="text" name="text" placeholder="First Name" ></td>
+                            <td> <input class="mb-4" type="text" name="text" placeholder="Last Name" ></td>
+                          </tr>
+                          </label>
+                        </div>
+
                         <div class="row px-3">
                             <label class="mb-1">
                       <h6 class="mb-0 text-sm">User Name</h6>
@@ -59,18 +73,6 @@
 
                         <div class="row px-3">
                             <label class="mb-1">
-                    <h6 class="mb-0 text-sm">Email</h6>
-                  </label> <input class="mb-4" type="text" name="text" placeholder="User Name" name="email" [(ngModel)]="form.email" required email #email="ngModel">
-                            <div class="alert-danger" *ngIf="f.submitted && email.invalid">
-                                <div *ngIf="email.errors.required">Email is required</div>
-                                <div *ngIf="email.errors.email">
-                                    Email must be a valid email address
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="row px-3">
-                            <label class="mb-1">
                         <h6 class="mb-0 text-sm">Password</h6>
                     </label>
                             <input type="password" name="password" placeholder="Enter password" [(ngModel)]="form.password" required minlength="6" #password="ngModel">
@@ -82,6 +84,18 @@
                             </div>
                             <!-- <input type="password" name="password" placeholder="Confirm password"> -->
                         </div>
+
+                        <div class="row px-3">
+                          <label class="mb-1">
+                      <h6 class="mb-0 text-sm">Email</h6>
+                    </label> <input class="mb-4" type="text" name="text" placeholder="User Name" name="email" [(ngModel)]="form.email" required email #email="ngModel">
+                          <div class="alert-danger" *ngIf="f.submitted && email.invalid">
+                              <div *ngIf="email.errors.required">Email is required</div>
+                              <div *ngIf="email.errors.email">
+                                  Email must be a valid email address
+                              </div>
+                          </div>
+                      </div>
 
                         <div class="row px-3">
                             <label class="mb-1">
