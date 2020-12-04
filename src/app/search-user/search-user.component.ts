@@ -39,11 +39,13 @@ export class SearchUserComponent implements OnInit {
       .then(res => {
         this.listUser = res;
         if(this.listUser.length == 0){
-          this.message = 'không tìm thấy kết quả';
+          this.listUser = [];
+          this.message = 'no results found';
         }
-        this.message = 'kết quả tìm kiếm của:' + name ;
+        this.message = 'Search Results for ' + name ;
       }).catch(e => {
-        this.message = 'không tìm thấy kết quả';
+        this.listUser = [];
+        this.message = 'no results found';
       })
   }
 

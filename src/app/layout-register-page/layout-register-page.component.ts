@@ -15,6 +15,7 @@ export class LayoutRegisterPageComponent implements OnInit {
   isSuccessful = false;
   isSignUpFailed = false;
   errorMessage = '';
+  firstName = '';
 
   constructor(
     private authService: AuthService,
@@ -25,7 +26,8 @@ export class LayoutRegisterPageComponent implements OnInit {
   }
 
   register(): void{
-    this.authService.register(this.form).subscribe(data => {
+    debugger
+    this.authService.register(this.form, this.firstName).subscribe(data => {
       console.log(data)
       this.isSuccessful = true;
       this.isSignUpFailed = false;
