@@ -47,8 +47,12 @@
                     <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
                         <div class="carousel-inner">
                             <div class="carousel-item" [ngClass]="{active: i == 0}"
-                                *ngFor="let imgTemp of post.images;index as i">
-                                <img class="d-block w-100" src="{{imgTemp.img}}" alt="First slide">
+                                *ngFor="let imageTemp of post.images;index as i">
+                                <a class="strip" href="{{imageTemp.img}}" title="" data-strip-group="mygroup"
+                                    data-strip-group-options="loop: false">
+                                    <img class="d-block w-100" src="{{imageTemp.img}}" alt="First slide"
+                                        style="height: 500px; ">
+                                </a>
                             </div>
                         </div>
                         <a class="carousel-control-prev" href="#carouselExampleControls" role="button"
@@ -64,16 +68,34 @@
                     </div>
                     <!-- end img -->
 
-                    <div class="we-video-info">
+                    <div class="we-video-info" *ngIf="checkGlobalLike[i].value == true">
                         <ul>
                             <li>
-                                <button type="submit" (click)="eventLike(post.id)">
-                                    <span class="like" data-toggle="tooltip" title="like">
-                                        <i class="ti-heart"></i>
-                                        <ins>{{post.likes.length}}</ins>
-                                    </span>
+                                <button type="submit" (click)="eventLike(post.id)" class="btn btn-primary">
+                                    unlike
                                 </button>
-                                
+                            </li>
+                            <li>
+                                {{post.likes.length}} likes
+                            </li>
+                            <li>
+                                <span class="comment" data-toggle="tooltip" title="Comments">
+                                    <i class="fa fa-comments-o"></i>
+                                    <ins>52</ins>
+                                </span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="we-video-info" *ngIf="checkGlobalLike[i].value == false">
+                        <ul>
+                            <li>
+                                <button type="submit" (click)="eventLike(post.id)" class="btn btn-light">
+                                    like
+                                </button>
+                            </li>
+                            <li>
+                                {{post.likes.length}} likes
                             </li>
                             <li>
                                 <span class="comment" data-toggle="tooltip" title="Comments">
@@ -96,7 +118,48 @@
                             <div class="coment-head">
                                 <h5><a href="time-line.html" title="">{{comment.user.username}}</a></h5>
                                 <span>1 year ago</span>
-                                <a class="we-reply" href="#" title="Reply"><i class="fa fa-reply"></i></a>
+                                <!-- <a class="we-reply" href="#" title="Reply"><i class="fa fa-reply"></i></a> -->
+                                <a *ngIf="comment.user.id == user.id" class="we-reply" title="Reply"
+                                    id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true"
+                                    aria-expanded="false"><i class="fa fa-caret-down"></i></a>
+                                <div class="dropdown show">
+                                    <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                        <a class="dropdown-item" data-toggle="modal"
+                                            [attr.data-target]="'#'+comment.id">Edit Comment</a>
+                                        <a class="dropdown-item" (click)="deleteComment(comment.id)">Delete Comment</a>
+                                    </div>
+                                </div>
+                                <!-- Modal -->
+                                <div class="modal fade" [attr.id]="comment.id" tabindex="-1" role="dialog"
+                                    aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="exampleModalLabel">Edit Comment</h5>
+                                                <button type="button" class="close" data-dismiss="modal"
+                                                    aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <div class="form-group">
+                                                    <label for="exampleFormControlTextarea1">Example textarea</label>
+                                                    <textarea class="form-control" id="exampleFormControlTextarea1"
+                                                        rows="3" name="comment-content"
+                                                        [(ngModel)]="comment.content"></textarea>
+                                                </div>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary"
+                                                    data-dismiss="modal">Close</button>
+                                                <button type="button" class="btn btn-primary"
+                                                    (click)="editComment(comment)">Edit Comment</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Modal -->
+                                <!-- edit comment -->
                             </div>
                             <p>{{comment.content}}</p>
                         </div>
@@ -111,9 +174,10 @@
                         <div class="post-comt-box">
                             <form method="post">
                                 <input placeholder="Post your comment" name="content"
-                                    (change)="onChange($event.target.value)" [value]="comment.content">
-                                <button type="submit" (click)="postComment(post.id)"
-                                    class="btn btn-dark">Comment</button>
+                                    (change)="onChange($event.target.value)" [value]="comment.content"
+                                    class="form-control">
+                                <button type="submit" (click)="postComment(post.id)" class="btn btn-dark"
+                                    hidden>Comment</button>
                             </form>
                         </div>
                     </li>

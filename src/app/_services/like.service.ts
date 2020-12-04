@@ -24,16 +24,29 @@ export class LikeService {
     })
   }
 
-  getCountLike = (postId): Promise<Object> => {
-        return new Promise((resolve, reject) => {
-            let url = API_URL + 'countLike/' + postId;
-            this.http.get(url)
-                .subscribe(res => {
-                    resolve(res);
-                }, err => {
-                  window.alert("service loi");
-                    reject(err);
-                })
+  // getCountLike = (postId): Promise<Object> => {
+  //       return new Promise((resolve, reject) => {
+  //           let url = API_URL + 'countLike/' + postId;
+  //           this.http.get(url)
+  //               .subscribe(res => {
+  //                   resolve(res);
+  //               }, err => {
+  //                 window.alert("service loi");
+  //                   reject(err);
+  //               })
+  //       })
+  //     }
+
+  getIsLike = (postId, userId): Promise<Object> => {
+    return new Promise((resolve, reject) => {
+      let url = API_URL + 'checkLike/' + postId + '/' + userId;
+      console.log(url);
+      this.http.get(url)
+        .subscribe(res => {
+          resolve(res);
+        }, err => {
+          reject(err);
         })
-      }
+    })
+  }
 }
