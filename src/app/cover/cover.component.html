@@ -1,9 +1,5 @@
 <div class="feature-photo">
     <figure><img src="{{user.cover}}" alt="" style="height: 600px;"></figure>
-    <div class="add-btn">
-        <span>1205 followers</span>
-        <a href="#" title="" data-ripple="">Add Friend</a>
-    </div>
     <form class="edit-phto">
         <i class="fa fa-camera-retro"></i>
         <label class="fileContainer">
@@ -37,7 +33,6 @@
                         <li>
                             <a class="" title="" data-ripple="" [routerLink]="['newfeed-profile']">time line</a>
                             <a class="" title="" data-ripple="" [routerLink]="['photo']">Photos</a>
-                            <a class="" title="" data-ripple="">Friends</a>
                             <a class="" title="" data-ripple="" [routerLink]="['about']">about</a>
                             <a class="" title="" data-ripple="" data-toggle="modal" data-target="#exampleModal" (click)="getGender()">Change infomation</a>
                         </li>
@@ -93,15 +88,13 @@
                             <option value="" *ngFor="let gd of listGender" >{{gd.igender}}}</option>
                       </select>
                     </div> -->
-                    <div>
-                        <label for="exampleInputEmail1">Gender</label>
-                        <div class="form-check" *ngFor="let gd of listGender">
-                            <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked>
-                            <label class="form-check-label" for="exampleRadios1">
+
+
+                    <div *ngFor="let gd of listGender">
+                        <label for="">
+                          <input id="" [value]='gd.id' type="radio" name="gender" [(ngModel)]="user.gender.id">
                           {{gd.igender}}
                         </label>
-                        </div>
-                        <br>
                     </div>
 
 

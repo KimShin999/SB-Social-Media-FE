@@ -26,7 +26,7 @@
     </div>
     <!-- add post new box -->
     <div class="central-meta item">
-        <div class="user-post" *ngFor="let post of posts">
+        <div class="user-post" *ngFor="let post of posts; index as i">
             <div class="friend-info">
                 <figure>
                     <img src="{{post.appUser.avatar}}" alt="">
@@ -80,10 +80,9 @@
                         <!-- <div *ngFor="let image of post.images">
                             <img src="{{image.img}}" height="315">
                         </div> -->
-
                         <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
                             <div class="carousel-inner">
-                                <div class="carousel-item" [ngClass]="{active: i == 0}" *ngFor="let image of post.images;index as i">
+                                <div class="carousel-item" [ngClass]="{active: i == 0}" *ngFor="let image of post.images;index as isis">
                                     <a class="strip" href="{{image.img}}" title="" data-strip-group="mygroup" data-strip-group-options="loop: false">
                                         <img class="d-block w-100" src="{{image.img}}" alt="First slide" style="height: 500px; ">
                                     </a>
@@ -99,22 +98,44 @@
                             </a>
                         </div>
                     </div>
-                    <div class="we-video-info">
+
+                    <div class="we-video-info" *ngIf="checkGlobalLike[i].value == true">
                         <ul>
                             <li>
-                                <span class="like" data-toggle="tooltip" title="like">
-                    <i class="ti-heart"></i>
-                    <ins>2.2k</ins>
-                  </span>
+                                <button type="submit" (click)="eventLike(post.id)" class="btn btn-primary">
+                                    unlike
+                                </button>
+                            </li>
+                            <li>
+                                {{post.likes.length}} likes
                             </li>
                             <li>
                                 <span class="comment" data-toggle="tooltip" title="Comments">
-                    <i class="fa fa-comments-o"></i>
-                    <ins>52</ins>
-                  </span>
+                                    <i class="fa fa-comments-o"></i>
+                                    <ins>{{post.comments.length}}</ins>
+                                </span>
                             </li>
                         </ul>
                     </div>
+                    <div class="we-video-info" *ngIf="checkGlobalLike[i].value == false">
+                        <ul>
+                            <li>
+                                <button type="submit" (click)="eventLike(post.id)" class="btn btn-light">
+                                    like
+                                </button>
+                            </li>
+                            <li>
+                                {{post.likes.length}} likes
+                            </li>
+                            <li>
+                                <span class="comment" data-toggle="tooltip" title="Comments">
+                                    <i class="fa fa-comments-o"></i>
+                                    <ins>{{post.comments.length}}</ins>
+                                </span>
+                            </li>
+                        </ul>
+                    </div>
+
                 </div>
             </div>
             <div class="coment-area">
@@ -127,7 +148,7 @@
                             <div class="coment-head">
                                 <h5><a href="time-line.html" title="">{{comment.user.firstName}}</a></h5>
                                 <span>1 year ago</span>
-                                <a class="we-reply" title="Reply" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-caret-down"></i></a>
+                                <a *ngIf="comment.user.id == user.id" class="we-reply" title="Reply" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-caret-down"></i></a>
                                 <div class="dropdown show">
                                     <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
                                         <a class="dropdown-item" data-toggle="modal" [attr.data-target]="'#'+comment.id">Edit Comment</a>

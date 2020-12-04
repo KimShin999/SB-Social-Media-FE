@@ -1,21 +1,20 @@
 <aside class="sidebar static">
-  <div class="widget friend-list stick-widget">
-    <h4 class="widget-title">Friends</h4>
-    <div id="searchDir"></div>
-    <ul id="people-list" class="friendz-list">
-     <div>
-      <li>
-        <figure>
-          <img src="../assets/navbar/images/resources/friend-avatar.jpg" alt="">
-          <span class="status f-online"></span>
-        </figure>
-        <div class="friendz-meta">
-          <a href="time-line.html">bucky barnes</a>
-          <i><a href="https://wpkixx.com/cdn-cgi/l/email-protection" class="__cf_email__"
-                data-cfemail="4136282f352433322e2d25243301262c20282d6f222e2c">[email&#160;protected]</a></i>
-        </div>
-      </li>
-     </div>
-    </ul>
-  </div><!-- friends list sidebar -->
+    <div class="widget friend-list stick-widget">
+        <h4 class="widget-title">Friends</h4>
+        <div id="searchDir"></div>
+        <ul id="people-list" class="friendz-list">
+            <div>
+                <li *ngFor="let user of listUsers">
+                    <figure>
+                        <img src="{{user.avatar}}" alt="">
+                        <span class="status f-online"></span>
+                    </figure>
+                    <div class="friendz-meta">
+                        <a (click)="navigateToFriendHome(user.id)">{{user.username}}</a>
+                    </div>
+                </li>
+            </div>
+        </ul>
+    </div>
+    <!-- friends list sidebar -->
 </aside>

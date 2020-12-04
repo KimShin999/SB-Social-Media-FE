@@ -1,3 +1,4 @@
+import { LikeService } from './../_services/like.service';
 import { ProfilePostService } from './../_services/profile-post.service';
 import { PostService } from './../_services/post.service';
 import { HttpEventType, HttpResponse } from '@angular/common/http';
@@ -28,6 +29,7 @@ export class TimelineProfileComponent implements OnInit {
   fileInfos: Observable<any>;
   selectedFiles: FileList;
   posts: any = [];
+  checkGlobalLike: any = [];
 
 
   constructor(
@@ -36,7 +38,8 @@ export class TimelineProfileComponent implements OnInit {
     private service: PostService,
     private profilePostService: ProfilePostService,
     private router: Router,
-    private commentService: CommentService
+    private commentService: CommentService,
+    private likeService: LikeService,
   ) { }
   ngOnInit(): void {
     this.userService.getUserById(this.id).subscribe(
@@ -95,6 +98,15 @@ export class TimelineProfileComponent implements OnInit {
       (data) =>{
         console.log(data);
         this.posts = data;
+        for (let i = 0; i < this.posts.length; i++) {
+          this.likeService.getIsLike(this.posts[i].id, this.id)
+            .then(res => {
+              this.checkGlobalLike[i] = {value : res};
+              console.log(res)
+            }).catch(e => {
+              alert('Connection Error !');
+            })
+        }
       }
     )
   }
@@ -155,5 +167,16 @@ export class TimelineProfileComponent implements OnInit {
         this.getAllPostByUser();
       }
     )
+  }
+
+
+  eventLike(postId) {
+    this.likeService.updateData(postId, this.id)
+      .then(res => {
+        this.getAllPostByUser();
+      }).catch(e => {
+        alert('Connection Error !');
+      })
+      
   }
 }

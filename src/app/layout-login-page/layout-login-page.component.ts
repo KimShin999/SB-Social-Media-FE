@@ -17,9 +17,9 @@ export class LayoutLoginPageComponent implements OnInit {
   };
 
 
-  list: any = [
-    'nam', "nữ"
-  ];
+  // list: any = [
+  //   'nam', "nữ"
+  // ];
 
 
   isLoggedIn = false;

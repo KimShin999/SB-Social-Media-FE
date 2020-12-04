@@ -44,6 +44,8 @@ export class TimelineFriendProfileComponent implements OnInit {
     private actRoute: ActivatedRoute
   ) {
     this.idSearch = parseInt(this.actRoute.snapshot.params.id);
+    
+    this.router.navigateByUrl('/myfriend/'+ this.idSearch+'/timeline-friend-profile/'+ this.idSearch);
     this.userService.getUserById(this.idSearch).subscribe(
       data => {
         this.userSearch = data;

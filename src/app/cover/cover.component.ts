@@ -84,6 +84,7 @@ export class CoverComponent implements OnInit {
       .subscribe(
         (response) => {
           this.listGender = response;
+          console.log(this.listGender);
         }, error => {
           console.log(error)
         }
@@ -93,7 +94,7 @@ export class CoverComponent implements OnInit {
   changeInfo(){
     this.userService.changeInfoUser(this.user,this.id).subscribe(
       (data) => {
-        this.user = data;
+        data = this.user;
       }
     )
   }
