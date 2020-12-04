@@ -65,7 +65,32 @@
                             <div class="coment-head">
                                 <h5><a href="time-line.html" title="">{{comment.user.username}}</a></h5>
                                 <span>1 year ago</span>
-                                <a class="we-reply" href="#" title="Reply"><i class="fa fa-reply"></i></a>
+                                <a *ngIf="comment.user.id == userCurrent.id" class="we-reply" title="Reply" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-caret-down"></i></a>
+                                <div class="dropdown show">
+                                    <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                        <a class="dropdown-item" data-toggle="modal" [attr.data-target]="'#'+comment.id">Edit Comment</a>
+                                        <a class="dropdown-item" (click)="deleteComment(comment.id)">Delete Comment</a>
+                                    </div>
+                                </div>
+
+                                <!-- Modal -->
+                                <div class="modal fade" [attr.id]="comment.id" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                  <div class="modal-dialog" role="document">
+                                      <div class="modal-content">
+                                          <div class="modal-body">
+                                              <div class="form-group">
+                                                  <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="comment-content" [(ngModel)]="comment.content"></textarea>
+                                              </div>
+                                          </div>
+                                          <div class="modal-footer">
+                                              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                              <button type="button" class="btn btn-primary" (click)="editComment(comment)" data-dismiss="modal">Edit Comment</button>
+                                          </div>
+                                      </div>
+                                  </div>
+                              </div>
+                              <!-- Modal -->
+
                             </div>
                             <p>{{comment.content}}</p>
                         </div>
