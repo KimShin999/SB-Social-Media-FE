@@ -6,11 +6,11 @@
             <div>
                 <li *ngFor="let user of listUsers">
                     <figure>
-                        <img src="{{user.avatar}}" alt="">
+                        <img style="cursor: pointer;" (click)="navigateToFriendHome(user.id)" src="{{user.avatar}}" alt="">
                         <span class="status f-online"></span>
                     </figure>
-                    <div class="friendz-meta">
-                        <a (click)="navigateToFriendHome(user.id)">{{user.username}}</a>
+                    <div class="friendz-meta" style="cursor: pointer;">
+                        <a (click)="navigateToFriendHome(user.id)" style="color: blue;">{{user.username}}</a>
                     </div>
                 </li>
             </div>
