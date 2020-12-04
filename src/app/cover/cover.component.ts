@@ -14,7 +14,6 @@ export class CoverComponent implements OnInit {
   user: any = {};
   isLoggedIn = false;
   id = this.tokenStorage.getUser().id;
-
   selectedFile: File;
   retrievedImage: any;
   base64Data: any;

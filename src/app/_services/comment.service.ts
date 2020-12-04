@@ -30,5 +30,4 @@ export class CommentService {
     return this.http.delete(API_URL+ 'deleteComment/' +idUser+ '/'+commentId, httpOptions)
   }
 
-
 }

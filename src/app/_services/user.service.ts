@@ -40,10 +40,10 @@ export class UserService {
   }
 
 
-  getalluserbyname = (name): Promise<Object> => {
+  getalluserbyname = (name, id): Promise<Object> => {
     debugger
     return new Promise((resolve, reject) => {
-      let url = `http://localhost:8080/api/users/searchByName/${name}`;
+      let url = `http://localhost:8080/api/users/searchByName/${name}/${id}`;
       this.http.get(url)
       .subscribe(res =>{
         resolve(res);

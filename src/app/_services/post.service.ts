@@ -11,7 +11,6 @@ export class PostService {
 
   private baseUrl = 'http://localhost:8080';
   upload(file: File): Observable<HttpEvent<any>> {
-    debugger
     const formData: FormData = new FormData();
     formData.append('file', file);
     const req = new HttpRequest('POST', `${this.baseUrl}/api/posts/imgPost`, formData,{
@@ -39,7 +38,6 @@ export class PostService {
 
   //thuong them
    getGlobalPost = (): Promise<Object> => {
-     debugger
         return new Promise((resolve, reject) => {
             let url = `http://localhost:8080/api/posts/`;
             this.http.get(url)

@@ -24,6 +24,7 @@ export class NewfeedComponent implements OnInit {
   fileInfos: Observable<any>;
   selectedFiles: FileList;
   listGlobalPost: any = [];
+  checkGlobalLike: any = [];
   post: any = {
   };
   comment: any = {
@@ -52,7 +53,6 @@ export class NewfeedComponent implements OnInit {
     this.getAllGlobalPost();
   }
   upload(idx, file): void {
-    debugger
     this.progressInfos[idx] = { value: 0, fileName: file.name };
     this.service.upload(file).subscribe(
       event => {
@@ -69,15 +69,22 @@ export class NewfeedComponent implements OnInit {
   upPost(): void {
     this.profilePostService.createpost(this.post, this.id).
       then(res => {
+        this.getAllGlobalPost();
+        this.listGlobalPost = this.listGlobalPost.reverse();
         this.listGlobalPost.push(res);
         this.listGlobalPost = this.listGlobalPost.reverse();
+        this.checkGlobalLike = this.checkGlobalLike.reverse();
+        this.checkGlobalLike.push({value: false});
+        this.checkGlobalLike = this.checkGlobalLike.reverse();
         this.post.content = "";
       }).catch(e => {
         console.log("ko dang dc");
       })
+    
+      // this.checkGlobalLike.push({value: false});
+      
   }
   selectFiles(event): void {
-    debugger
     this.progressInfos = [];
     const files = event.target.files; let isImage = true;
     for (let i = 0; i < files.length; i++) {
@@ -109,12 +116,13 @@ export class NewfeedComponent implements OnInit {
     this.comment.content = "";
   }
 
-  eventLike(postId){
+  eventLike(postId) {
     this.likeService.updateData(postId, this.id)
-    .then(res => {
+      .then(res => { 
+        this. getAllGlobalPost();
       }).catch(e => {
-        alert('Connection Error !');
       })
+     
   }
 
   onChange(value) {
@@ -122,14 +130,33 @@ export class NewfeedComponent implements OnInit {
   }
 
   getAllGlobalPost() {
-    debugger
     this.service.getGlobalPost()
       .then(res => {
         this.listGlobalPost = res;
         this.listGlobalPost = this.listGlobalPost.reverse();
+        for (let i = 0; i < this.listGlobalPost.length; i++) {
+          this.likeService.getIsLike(this.listGlobalPost[i].id, this.id)
+            .then(res => {
+              this.checkGlobalLike[i] = {value : res};
+            }).catch(e => {
+            })
+        }
       }).catch(e => {
-        alert('Connection Error !');
       })
-    alert("ok");
+  }
+
+  editComment(comment){
+    this.commentService.updateComment(comment,this.id).subscribe(
+      (data) =>{
+        console.log(data);
+      }
+    )
+  }
+  deleteComment(id){
+    this.commentService.deleteComment(this.id,id).subscribe(
+      (data) =>{
+        this.getAllGlobalPost();
+      }
+    )
   }
 }

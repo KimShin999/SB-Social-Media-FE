@@ -2,18 +2,13 @@
     <div class="topbar stick">
         <div class="logo">
             <label>
-              <a title="" href="newsfeed.html"><img src="../assets/navbar/images/logo.png" alt=""></a>
+              <a title="" (click)="gototimeline()">
+                <img src="../assets/navbar/images/logo.png" alt="">
+              </a>
             </label>
+
         </div>
         <div class="top-area">
-          <!-- <div class="user-img">
-            <nav class="navbar navbar-light bg-light">
-              <form class="form-inline">
-                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-              </form>
-            </nav>
-          </div> -->
           <div class="user-img">
             <button (click)="gotomypage()" class="btn btn-outline-light" style="border-radius: 20px; margin-bottom: 8px; width: auto; height: 40px;">
               <label>
@@ -24,11 +19,11 @@
           </div>
             <ul class="setting-area" >
                 <li>
-                  <button (click)="gototimeline()" class="btn btn-outline-light" style="border-radius: 50%; margin-left: 10px;">
-                  <a title="Home" data-ripple=""><i class="ti-home" style="color: blue;"></i></a>
-                  </button>
                   <button (click)="gotosearchuser()" class="btn btn-outline-light" style="border-radius: 50%;  margin-left: 10px;">
                     <a title="search" data-ripple=""><i class="ti ti-search" style="color: blue;"></i></a>
+                  </button>
+                  <button (click)="logout()" class="btn btn-outline-light" style="border-radius: 50%;  margin-left: 10px;">
+                    <a title="search" data-ripple=""><i class="ti ti-power-off" style="color: blue;"></i></a>
                   </button>
                 </li>
             </ul>

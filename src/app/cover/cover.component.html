@@ -47,23 +47,21 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                <h5 class="modal-title" id="exampleModalLabel">Edit infomation</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
             </div>
             <div class="modal-body">
-                <form>
+                <form name="myForm">
                     <div class="form-group">
                         <label for="exampleInputEmail1">First Name</label>
-                        <input type="text" class="form-control" name="firstName" aria-describedby="emailHelp" [(ngModel)]="user.firstName">
-
+                        <input type="text" class="form-control" name="firstName" aria-describedby="emailHelp" [(ngModel)]="user.firstName" required minlength="2" maxlength="20" #firstName="ngModel">
                     </div>
 
                     <div class="form-group">
                         <label for="exampleInputEmail1">Last Name</label>
-                        <input type="text" class="form-control" name="lastName" aria-describedby="emailHelp" [(ngModel)]="user.lastName">
-
+                        <input type="text" class="form-control" name="lastName" aria-describedby="emailHelp" [(ngModel)]="user.lastName" required minlength="2" maxlength="20">
                     </div>
 
                     <div class="form-group">
@@ -89,14 +87,15 @@
                       </select>
                     </div> -->
 
-
-                    <div *ngFor="let gd of listGender">
-                        <label for="">
+                    <div>
+                        <label for="">Gender</label>
+                        <div *ngFor="let gd of listGender">
+                            <label for="">
                           <input id="" [value]='gd.id' type="radio" name="gender" [(ngModel)]="user.gender.id">
                           {{gd.igender}}
                         </label>
+                        </div>
                     </div>
-
 
                     <button type="submit" class="btn btn-primary">Submit</button>
                 </form>

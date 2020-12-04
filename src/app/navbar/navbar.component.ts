@@ -46,4 +46,11 @@ export class NavbarComponent implements OnInit {
     gotosearchuser(){
       this.router.navigateByUrl('/timeline/search')
     }
+
+    logout(){
+      this.tokenStorage.signOut()
+      if(this.tokenStorage.getToken() == null){
+        this.router.navigateByUrl('/login')
+      }
+    }
 }
