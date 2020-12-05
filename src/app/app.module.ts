@@ -26,6 +26,7 @@ import { AboutFriendComponent } from './about-friend/about-friend.component';
 import { PhotoFriendComponent } from './photo-friend/photo-friend.component';
 import { FriendOfFriendComponent } from './friend-of-friend/friend-of-friend.component';
 import { SearchUserComponent } from './search-user/search-user.component';
+import { LayoutFakeComponent } from './layout-fake/layout-fake.component';
 
 @NgModule({
   declarations: [
@@ -48,7 +49,8 @@ import { SearchUserComponent } from './search-user/search-user.component';
     AboutFriendComponent,
     PhotoFriendComponent,
     FriendOfFriendComponent,
-    SearchUserComponent
+    SearchUserComponent,
+    LayoutFakeComponent
   ],
   imports: [
     HttpClientModule,

@@ -1,12 +1,20 @@
 <aside class="sidebar static">
   <div class="widget friend-list stick-widget">
-      <li>
-        <label>
-          <figure>
-            <img src="../assets/navbar/images/resources/friend-avatar.jpg" alt="">
-            <a style="margin-left: 30px;" href="time-line.html">bucky barnes</a>
-          </figure>
-        </label>
-      </li>
+      <h4 class="widget-title">Friends</h4>
+      <div id="searchDir"></div>
+      <ul id="people-list" class="friendz-list">
+          <div>
+              <li *ngFor="let user of listUsers">
+                  <figure>
+                      <img src="{{user.avatar}}" alt="">
+                      <span class="status f-online"></span>
+                  </figure>
+                  <div class="friendz-meta">
+                      <a (click)="redirectTo(user.id)">{{user.firstName}}</a>
+                  </div>
+              </li>
+          </div>
+      </ul>
   </div>
+  <!-- friends list sidebar -->
 </aside>

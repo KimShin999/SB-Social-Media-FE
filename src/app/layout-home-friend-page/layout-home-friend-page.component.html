@@ -68,7 +68,7 @@
                           <li>
                             <a class="active" title="" data-ripple="" [routerLink]="['timeline-friend-profile', userSearch.id]">time line</a>
                             <a class="" title="" data-ripple="" [routerLink]="['photo', userSearch.id]">Photos</a>
-                            <a class="" title="" data-ripple="" [routerLink]="['friend']">Friends</a>
+                            <a class="" title="" data-ripple="" [routerLink]="['friend', userSearch.id]">Friends</a>
                             <a class="" title="" data-ripple="" [routerLink]="['about', userSearch.id]">about</a>
                           </li>
                         </div>
@@ -93,7 +93,7 @@
           </div>
 
           <div class="col-lg-3">
-              <app-navbarright></app-navbarright>
+              <app-navbarright  ></app-navbarright>
           </div>
 
       </div>

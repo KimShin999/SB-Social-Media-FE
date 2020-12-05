@@ -65,7 +65,7 @@ const routes: Routes = [
         component: PhotoFriendComponent,
       },
       {
-        path: 'friend',
+        path: 'friend/:id',
         component: FriendOfFriendComponent,
       },
     ],

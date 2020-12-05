@@ -16,7 +16,6 @@ import { UserService } from '../_services/user.service';
 })
 export class TimelineFriendProfileComponent implements OnInit {
 
-  @Input() id;
 
   post: any = {
   };
