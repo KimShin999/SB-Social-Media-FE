@@ -56,6 +56,20 @@ export class RelationshipService {
     })
   }
 
+
+  getlistrelationship= (id, user: []): Promise<Object> => {
+    return new Promise((resolve, reject) => {
+      let url = `http://localhost:8080/api/relationships/getListRelationship/${id}`;
+      this.http.post(url, user)
+      .subscribe(res =>{
+        resolve(res);
+      }, err => {
+        reject(err);
+      })
+    })
+    debugger
+  }
+
   getMakeFriendRequest= (id): Promise<Object> => {
     return new Promise((resolve, reject) => {
       let url = `http://localhost:8080/api/relationships/getListFriendRequest/${id}`;
@@ -70,6 +84,7 @@ export class RelationshipService {
 
 
   acceptFriend= (id): Promise<Object> => {
+    debugger
     return new Promise((resolve, reject) => {
       let url = `http://localhost:8080/api/relationships/friendResponse/${id}`;
       this.http.get(url)
