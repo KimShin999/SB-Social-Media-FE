@@ -15,9 +15,7 @@ export class AboutComponent implements OnInit {
   id =  this.tokenStorage.getUser().id;
   constructor(
     private userService: UserService,
-    private tokenStorage: TokenStorageService,
-    private router: Router,
-    private http: HttpClient
+    private tokenStorage: TokenStorageService
   ) {
   }
 
@@ -30,7 +28,7 @@ export class AboutComponent implements OnInit {
       err => {
         this.user = JSON.parse(err.error).message;
       }
-      
+
     );
   }
 

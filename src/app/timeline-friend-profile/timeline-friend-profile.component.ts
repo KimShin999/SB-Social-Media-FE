@@ -43,6 +43,10 @@ export class TimelineFriendProfileComponent implements OnInit {
     private commentService: CommentService,
     private actRoute: ActivatedRoute
   ) {
+
+  }
+
+  ngOnInit(): void {
     this.idSearch = parseInt(this.actRoute.snapshot.params.id);
 
     this.router.navigateByUrl('/myfriend/'+ this.idSearch+'/timeline-friend-profile/'+ this.idSearch);
@@ -64,11 +68,6 @@ export class TimelineFriendProfileComponent implements OnInit {
       }
     );
     this.getAllPostByUser();
-  }
-
-  ngOnInit(): void {
-
-
     }
 
   upload(idx, file): void {

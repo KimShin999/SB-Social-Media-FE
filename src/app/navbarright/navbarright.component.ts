@@ -11,7 +11,7 @@ import { TokenStorageService } from '../_services/token-storage.service';
 export class NavbarrightComponent implements OnInit {
   id =  this.tokenStorage.getUser().id;
   listUsers: any = [];
-  constructor( 
+  constructor(
     private friendService: FriendService,
     private tokenStorage: TokenStorageService,
     private router: Router
@@ -27,7 +27,8 @@ export class NavbarrightComponent implements OnInit {
     })
   }
 
-  navigateToFriendHome(id){
-    this.router.navigateByUrl('/myfriend/'+ id+'/timeline-friend-profile/'+ id);
+  navigateToFriendHome(idFriend){
+    this.router.navigateByUrl('/myfriend/'+ idFriend+'/timeline-friend-profile/'+ idFriend);
   }
+
 }

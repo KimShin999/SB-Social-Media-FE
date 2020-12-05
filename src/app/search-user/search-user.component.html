@@ -4,9 +4,7 @@
       <ul class="nav nav-tabs">
           <h2>Search Friend</h2>
           <br>
-          <input type="text" class="form-control"  name="username" required placeholder="Nhập vào tên mà bạn muốn tìm kiếm"  (change)="onChange($event.target.value)" [value]="searchUserName">
-
-
+          <input type="text" class="form-control"  name="username" required placeholder="Enter your name search"  (change)="onChange($event.target.value)" [value]="searchUserName">
       </ul>
       <!-- Tab panes -->
       <div class="tab-content">
@@ -19,7 +17,7 @@
                   <a (click)="homefriend(user.id)" title=""><img src={{user.avatar}} alt=""></a>
                 </figure>
                 <div class="pepl-info">
-                  <h4><a (click)="homefriend(user.id)" title="">{{user.username}}</a></h4>
+                  <h4><a (click)="homefriend(user.id)" title="">{{user.firstName}}</a></h4>
                   <span>ftv model</span>
                 </div>
               </div>

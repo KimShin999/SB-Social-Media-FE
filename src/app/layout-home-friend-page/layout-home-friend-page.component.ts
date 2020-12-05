@@ -26,16 +26,15 @@ export class LayoutHomeFriendPageComponent implements OnInit {
   constructor(
     private userService: UserService,
     private tokenStorage: TokenStorageService,
-    private service: PostService,
-    private profilePostService: ProfilePostService,
     private router: Router,
-    private commentService: CommentService,
     private actRoute: ActivatedRoute,
     private serviceRelationship: RelationshipService
-  ) {
+  ) {}
+
+
+  ngOnInit(): void {
     this.idSearch = parseInt(this.actRoute.snapshot.params.id);
     this.getrelationship();
-
     this.userService.getUserById(this.idSearch).subscribe(
       data => {
         this.userSearch = data;
@@ -44,7 +43,6 @@ export class LayoutHomeFriendPageComponent implements OnInit {
         this.userSearch = JSON.parse(err.error).message;
       }
     );
-
     this.router.navigateByUrl('/myfriend/'+ this.idSearch+'/timeline-friend-profile/'+ this.idSearch);
   }
 
@@ -96,7 +94,4 @@ export class LayoutHomeFriendPageComponent implements OnInit {
   }
 
 
-  ngOnInit(): void {
-
-  }
 }

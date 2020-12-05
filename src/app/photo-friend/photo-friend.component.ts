@@ -24,7 +24,10 @@ export class PhotoFriendComponent implements OnInit {
     private router: Router,
     private commentService: CommentService,
     private actRoute: ActivatedRoute
-  ) {
+  ) {}
+
+
+  ngOnInit(): void {
     this.idSearch = parseInt(this.actRoute.snapshot.params.id);
     this.userService.getUserById(this.idSearch).subscribe(
       data => {
@@ -34,7 +37,6 @@ export class PhotoFriendComponent implements OnInit {
         this.userSearch = JSON.parse(err.error).message;
       }
     );
-      debugger
     this.profilePostService.getAllPostByUser(this.idSearch).subscribe(
       data => {
         this.posts = data;
@@ -42,14 +44,6 @@ export class PhotoFriendComponent implements OnInit {
       err => {
         this.userSearch = JSON.parse(err.error).message;
       }
-    );
-      console.log(this.posts);
-
-   }
-
-
-  ngOnInit(): void {
-
-  }
+    );}
 
 }

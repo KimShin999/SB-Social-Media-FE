@@ -25,10 +25,11 @@ export class NavbarleftComponent implements OnInit {
     private serviceRelationship: RelationshipService,
     private router: Router
   ) {
-    this.getMakeFriendRequest();
+
   }
 
   ngOnInit(): void {
+    this.getMakeFriendRequest();
   }
 
   logout(){

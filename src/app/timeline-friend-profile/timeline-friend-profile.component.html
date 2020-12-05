@@ -9,8 +9,8 @@
                     <img src="{{userSearch.avatar}}" alt="">
                 </figure>
                 <div class="friend-name">
-                    <ins><a href="time-line.html" title="">{{userSearch.username}}</a></ins>
-                    <span>published: june,2 2018 19:PM</span>
+                    <ins><a href="time-line.html" title="">{{userSearch.firstName}}</a></ins>
+                    <span>{{post.createAt}}</span>
                 </div>
                 <div class="post-meta">
                     <div class="description">
@@ -63,7 +63,7 @@
                         </div>
                         <div class="we-comment">
                             <div class="coment-head">
-                                <h5><a href="time-line.html" title="">{{comment.user.username}}</a></h5>
+                                <h5><a href="time-line.html" title="">{{comment.user.firstName}}</a></h5>
                                 <span>1 year ago</span>
                                 <a *ngIf="comment.user.id == userCurrent.id" class="we-reply" title="Reply" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-caret-down"></i></a>
                                 <div class="dropdown show">
