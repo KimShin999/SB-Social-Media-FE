@@ -3,7 +3,7 @@
     </div>
     <!-- add post new box -->
     <div class="central-meta item">
-        <div class="user-post" *ngFor="let post of posts">
+        <div class="user-post" *ngFor="let post of posts; index as i">
             <div class="friend-info">
                 <figure>
                     <img src="{{userSearch.avatar}}" alt="">
@@ -37,22 +37,45 @@
                             </a>
                         </div>
                     </div>
-                    <div class="we-video-info">
-                        <ul>
-                            <li>
-                                <span class="like" data-toggle="tooltip" title="like">
-                    <i class="ti-heart"></i>
-                    <ins>2.2k</ins>
-                  </span>
-                            </li>
-                            <li>
-                                <span class="comment" data-toggle="tooltip" title="Comments">
-                    <i class="fa fa-comments-o"></i>
-                    <ins>52</ins>
-                  </span>
-                            </li>
-                        </ul>
-                    </div>
+
+                    <div class="we-video-info" *ngIf="checkGlobalLike[i].value == true">
+                      <ul>
+                          <li>
+                              <button type="submit" (click)="eventLike(post.id)" class="btn btn-primary">
+                                  unlike
+                              </button>
+                          </li>
+                          <li>
+                              {{post.likes.length}} likes
+                          </li>
+                          <li>
+                              <span class="comment" data-toggle="tooltip" title="Comments">
+                                  <i class="fa fa-comments-o"></i>
+                                  <ins>{{post.comments.length}}</ins>
+                              </span>
+                          </li>
+                      </ul>
+                  </div>
+
+
+                    <div class="we-video-info" *ngIf="checkGlobalLike[i].value == false">
+                      <ul>
+                          <li>
+                              <button type="submit" (click)="eventLike(post.id)" class="btn btn-light">
+                                  like
+                              </button>
+                          </li>
+                          <li>
+                              {{post.likes.length}} likes
+                          </li>
+                          <li>
+                              <span class="comment" data-toggle="tooltip" title="Comments">
+                                  <i class="fa fa-comments-o"></i>
+                                  <ins>{{post.comments.length}}</ins>
+                              </span>
+                          </li>
+                      </ul>
+                  </div>
                 </div>
             </div>
             <div class="coment-area">

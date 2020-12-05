@@ -4,6 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { Identifier } from 'typescript';
 import { CommentService } from '../_services/comment.service';
+import { LikeService } from '../_services/like.service';
 import { PostService } from '../_services/post.service';
 import { ProfilePostService } from '../_services/profile-post.service';
 import { TokenStorageService } from '../_services/token-storage.service';
@@ -32,6 +33,7 @@ export class TimelineFriendProfileComponent implements OnInit {
   fileInfos: Observable<any>;
   selectedFiles: FileList;
   posts: any = [];
+  checkGlobalLike: any = [];
 
   constructor(
     private userService: UserService,
@@ -40,7 +42,8 @@ export class TimelineFriendProfileComponent implements OnInit {
     private profilePostService: ProfilePostService,
     private router: Router,
     private commentService: CommentService,
-    private actRoute: ActivatedRoute
+    private actRoute: ActivatedRoute,
+    private likeService: LikeService
   ) {
 
   }
@@ -67,6 +70,7 @@ export class TimelineFriendProfileComponent implements OnInit {
       }
     );
     this.getAllPostByUser();
+
     }
 
   upload(idx, file): void {
@@ -84,16 +88,6 @@ export class TimelineFriendProfileComponent implements OnInit {
         this.progressInfos[idx].percentage = 0;
       });
     }
-
-  getAllPostByUser(){
-    this.profilePostService.getAllPostByUser(this.idSearch).subscribe(
-      (data) =>{
-        console.log(data);
-        this.posts = data;
-      }
-    )
-  }
-
 
   onChange(value) {
     this.comment.content = value;
@@ -121,5 +115,30 @@ export class TimelineFriendProfileComponent implements OnInit {
             console.log(data);
           }
         )
+      }
+
+      getAllPostByUser(){
+        this.profilePostService.getAllPostByUser(this.idSearch).subscribe(
+          (data) =>{
+            this.posts = data;
+            this.posts = this.posts.reverse();
+            for (let i = 0; i < this.posts.length; i++) {
+              this.likeService.getIsLike(this.posts[i].id, this.idUserCurrent)
+                .then(res => {
+                  this.checkGlobalLike[i] = {value : res};
+                }).catch(e => {
+                })
+            }
+          }
+        )
+      }
+
+      eventLike(postId) {
+        this.likeService.updateData(postId, this.idUserCurrent)
+          .then(res => {
+            this.getAllPostByUser();
+          }).catch(e => {
+          })
+
       }
 }

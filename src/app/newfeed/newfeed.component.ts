@@ -80,9 +80,9 @@ export class NewfeedComponent implements OnInit {
       }).catch(e => {
         console.log("ko dang dc");
       })
-    
+
       // this.checkGlobalLike.push({value: false});
-      
+
   }
   selectFiles(event): void {
     this.progressInfos = [];
@@ -118,11 +118,11 @@ export class NewfeedComponent implements OnInit {
 
   eventLike(postId) {
     this.likeService.updateData(postId, this.id)
-      .then(res => { 
+      .then(res => {
         this. getAllGlobalPost();
       }).catch(e => {
       })
-     
+
   }
 
   onChange(value) {

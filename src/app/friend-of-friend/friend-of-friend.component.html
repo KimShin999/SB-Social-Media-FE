@@ -5,6 +5,7 @@
       <ul id="people-list" class="friendz-list">
           <div>
               <li *ngFor="let user of listUsers">
+                <div class="nearly-pepls">
                   <figure>
                       <img src="{{user.avatar}}" alt="">
                       <span class="status f-online"></span>
@@ -12,6 +13,7 @@
                   <div class="friendz-meta">
                       <a (click)="redirectTo(user.id)">{{user.firstName}}</a>
                   </div>
+                </div>
               </li>
           </div>
       </ul>
