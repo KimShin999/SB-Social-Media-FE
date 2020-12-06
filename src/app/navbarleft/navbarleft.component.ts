@@ -48,8 +48,9 @@ export class NavbarleftComponent implements OnInit {
     })
   }
 
-  homefriend(id){
-    this.router.navigate(["myfriend",id]);
- }
+ homefriend(idFriend){
+  this.router.navigateByUrl('/', {skipLocationChange: true}).then(()=>
+  this.router.navigate(['/myfriend/'+ idFriend+'/timeline-friend-profile/'+ idFriend]));
+}
 
 }

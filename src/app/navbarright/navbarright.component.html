@@ -7,7 +7,6 @@
                 <li *ngFor="let user of listUsers">
                     <figure>
                         <img src="{{user.avatar}}" alt="">
-                        <span class="status f-online"></span>
                     </figure>
                     <div class="friendz-meta">
                         <a (click)="redirectTo(user.id)">{{user.firstName}}</a>

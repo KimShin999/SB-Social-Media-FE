@@ -34,6 +34,7 @@ export class TimelineFriendProfileComponent implements OnInit {
   selectedFiles: FileList;
   posts: any = [];
   checkGlobalLike: any = [];
+  listUserLike: any = [];
 
   constructor(
     private userService: UserService,
@@ -139,6 +140,21 @@ export class TimelineFriendProfileComponent implements OnInit {
             this.getAllPostByUser();
           }).catch(e => {
           })
-
       }
+
+      getListUserLike(postId){
+        this.listUserLike = [];
+        this.likeService.getListUserLike(postId)
+          .then(res => {
+            this.listUserLike = res;
+            alert(this.getListUserLike.length)
+          }).catch(e => {
+          })
+      }
+
+
+ homefriend(idFriend){
+  this.router.navigateByUrl('/', {skipLocationChange: true}).then(()=>
+  this.router.navigate(['/myfriend/'+ idFriend+'/timeline-friend-profile/'+ idFriend]));
+}
 }

@@ -49,7 +49,6 @@ export class SearchUserComponent implements OnInit {
     this.userService.getalluserbyname(name, this.idUserCurrent)
       .then(res => {
         this.listUser = res;
-
         this.delay();
         if(this.listUser.length == 0){
           this.listUser = [];
@@ -63,10 +62,10 @@ export class SearchUserComponent implements OnInit {
       })
   }
 
-  homefriend(id){
-     this.router.navigate(["myfriend",id]);
+  homefriend(idFriend){
+    this.router.navigateByUrl('/', {skipLocationChange: true}).then(()=>
+    this.router.navigate(['/myfriend/'+ idFriend+'/timeline-friend-profile/'+ idFriend]));
   }
-
 
   delay(){
     this.getlistrelationship();
@@ -132,7 +131,6 @@ export class SearchUserComponent implements OnInit {
       this.checkrelationship[i] = 2;
     }).catch(e => {
     })
-    debugger
   }
 
 }

@@ -9,7 +9,7 @@
                     <img src="{{userSearch.avatar}}" alt="">
                 </figure>
                 <div class="friend-name">
-                    <ins><a href="time-line.html" title="">{{userSearch.firstName}}</a></ins>
+                    <ins><a (click)="homefriend(userSearch.id)" title="">{{userSearch.firstName}}</a></ins>
                     <span>{{post.createAt}}</span>
                 </div>
                 <div class="post-meta">
@@ -24,7 +24,7 @@
                         <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
                             <div class="carousel-inner">
                                 <div class="carousel-item" [ngClass]="{active: i == 0}" *ngFor="let image of post.images;index as i">
-                                    <img class="d-block w-100" src="{{image.img}}" alt="First slide">
+                                    <img class="d-block w-100" src="{{image.img}}" (click)="homefriend(userSearch.id)" alt="First slide">
                                 </div>
                             </div>
                             <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
@@ -37,7 +37,6 @@
                             </a>
                         </div>
                     </div>
-
                     <div class="we-video-info" *ngIf="checkGlobalLike[i].value == true">
                       <ul>
                           <li>
@@ -82,11 +81,11 @@
                 <ul class="we-comet">
                     <li *ngFor="let comment of post.comments">
                         <div class="comet-avatar">
-                            <img src="{{comment.user.avatar}}" alt="">
+                            <img (click)="homefriend(comment.user.id)" src="{{comment.user.avatar}}" alt="">
                         </div>
                         <div class="we-comment">
                             <div class="coment-head">
-                                <h5><a href="time-line.html" title="">{{comment.user.firstName}}</a></h5>
+                                <h5><a (click)="homefriend(comment.user.id)" title="">{{comment.user.firstName}}</a></h5>
                                 <span>1 year ago</span>
                                 <a *ngIf="comment.user.id == userCurrent.id" class="we-reply" title="Reply" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-caret-down"></i></a>
                                 <div class="dropdown show">

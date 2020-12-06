@@ -44,7 +44,6 @@ export class NewfeedComponent implements OnInit {
     this.userService.getUserById(this.id).subscribe(
       data => {
         this.user = data;
-        console.log(this.user);
       },
       err => {
         this.user = JSON.parse(err.error).message;
@@ -148,7 +147,6 @@ export class NewfeedComponent implements OnInit {
   editComment(comment){
     this.commentService.updateComment(comment,this.id).subscribe(
       (data) =>{
-        console.log(data);
       }
     )
   }
