@@ -32,6 +32,19 @@ export class RelationshipService {
     })
   }
 
+
+  deleterelationshipbyId = (id1, id2): Promise<Object> => {
+    return new Promise((resolve, reject) => {
+      let url = `http://localhost:8080/api/relationships/unFriend/${id1}/${id2}`;
+      this.http.delete(url)
+      .subscribe(res =>{
+        resolve(res);
+      }, err => {
+        reject(err);
+      })
+    })
+  }
+
   checkrelationship = (id1, id2): Promise<Object> => {
     return new Promise((resolve, reject) => {
       let url = `http://localhost:8080/api/relationships/checkRelationship/${id1}/${id2}`;
