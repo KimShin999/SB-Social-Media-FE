@@ -26,7 +26,7 @@
     </div>
     <!-- add post new box -->
     <div class="central-meta item">
-        <div class="user-post" *ngFor="let post of posts; index as i">
+        <div class="user-post" *ngFor="let post of posts; index as isis">
             <div class="friend-info">
                 <div class="row">
                     <div class="co">
@@ -36,7 +36,7 @@
                     </div>
                     <div class="col">
                         <div class="friend-name">
-                            <ins><a href="time-line.html" title="">{{user.username}}</a></ins>
+                            <ins><a href="time-line.html" title="">{{user.firstName}}</a></ins>
                             <span>{{post.createAt}}</span>
                             <!-- dau ba cham  -->
                         </div>
@@ -93,7 +93,7 @@
                         </div> -->
                         <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
                             <div class="carousel-inner">
-                                <div class="carousel-item" [ngClass]="{active: i == 0}" *ngFor="let image of post.images;index as isis">
+                                <div class="carousel-item" [ngClass]="{active: i == 0}" *ngFor="let image of post.images index as i">
                                     <a class="strip" href="{{image.img}}" title="" data-strip-group="mygroup" data-strip-group-options="loop: false">
                                         <img class="d-block w-100" src="{{image.img}}" alt="First slide" style="height: 500px; ">
                                     </a>
@@ -110,12 +110,10 @@
                         </div>
                     </div>
 
-                    <div class="we-video-info" *ngIf="checkGlobalLike[i].value == true">
+                    <div class="we-video-info" *ngIf="checkGlobalLike[isis].value == true">
                         <ul>
                             <li>
-                                <button type="submit" (click)="eventLike(post.id)" class="btn btn-primary">
-                                    unlike
-                                </button>
+                                <i (click)="eventLike(post.id)" class="fa fa-thumbs-up" style="color: darkblue;"></i>
                             </li>
                             <li>
                                 {{post.likes.length}} likes
@@ -128,12 +126,10 @@
                             </li>
                         </ul>
                     </div>
-                    <div class="we-video-info" *ngIf="checkGlobalLike[i].value == false">
+                    <div class="we-video-info" *ngIf="checkGlobalLike[isis].value == false">
                         <ul>
                             <li>
-                                <button type="submit" (click)="eventLike(post.id)" class="btn btn-light">
-                                    like
-                                </button>
+                                <i (click)="eventLike(post.id)" class="fa fa-thumbs-o-up" ></i>
                             </li>
                             <li>
                                 {{post.likes.length}} likes
@@ -158,7 +154,6 @@
                         <div class="we-comment">
                             <div class="coment-head">
                                 <h5><a href="time-line.html" title="">{{comment.user.firstName}}</a></h5>
-                                <span>1 year ago</span>
                                 <a *ngIf="comment.user.id == user.id" class="we-reply" title="Reply" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-caret-down"></i></a>
                                 <div class="dropdown show">
                                     <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
@@ -196,9 +191,9 @@
                             <p>{{comment.content}}</p>
                         </div>
                     </li>
-                    <!-- <li>
+                    <li>
                         <a href="#" title="" class="showmore underline">more comments</a>
-                    </li> -->
+                    </li>
                     <li class="post-comment">
                         <div class="comet-avatar">
                             <img src="{{user.avatar}}" alt="">
