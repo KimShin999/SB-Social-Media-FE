@@ -88,10 +88,10 @@ export class SearchUserComponent implements OnInit {
         if(this.listUser[i].id == this.listrelationship[j].secondUser.id || this.listUser[i].id == this.listrelationship[j].firstUser.id ){
           if(this.listrelationship[j].status.id == 1){
             if(this.listrelationship[j].secondUser.id == this.listUser[i].id){
-              this.checkrelationship.push(3);
+              this.checkrelationship.push(1);
               this.checkBreak = 1;
             }else{
-              this.checkrelationship.push(1);
+              this.checkrelationship.push(3);
               this.checkBreak = 1;
             }
           }else if(this.listrelationship[j].status.id == 2){
