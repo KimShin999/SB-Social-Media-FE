@@ -117,6 +117,7 @@ deleterelationshipbyId(id, i){
 }
 
 acceptFriend(i){
+  debugger
   this.serviceRelationship.acceptFriend(this.listrelationship[i].id)
   .then(res => {
     this.checkrelationship[i] = 2;
