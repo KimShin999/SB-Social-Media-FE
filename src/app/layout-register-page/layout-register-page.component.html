@@ -43,17 +43,19 @@
                             <div class="line"></div>
                         </div>
 
-                        <div class="row px-3">
-                          <label class="mb-1">
-                          <tr>
-                            <td style="width:285px"> <h6 class="mb-0 text-sm">Frist Name</h6></td>
-                            <td style="width:285px"> <h6 class="mb-0 text-sm">Last Name</h6></td>
-                          </tr>
-                          <tr>
-                            <td><input class="mb-4" type="text" name="text" placeholder="First Name" ></td>
-                            <td> <input class="mb-4" type="text" name="text" placeholder="Last Name" ></td>
-                          </tr>
-                          </label>
+                          <div class="row px-3">
+                            <label class="mb-1">
+                      <h6 class="mb-0 text-sm">Display Name</h6>
+                    </label> <input class="mb-4" type="text" name="firstName" placeholder="DisplayName" name="username" [(ngModel)]="firstName">
+                            <!-- <div class="alert-danger" *ngIf="f.submitted && username.invalid">
+                                <div *ngIf="username.errors.required">Username is required</div>
+                                <div *ngIf="username.errors.minlength">
+                                    Username must be at least 3 characters
+                                </div>
+                                <div *ngIf="username.errors.maxlength">
+                                    Username must be at most 20 characters
+                                </div>
+                            </div> -->
                         </div>
 
                         <div class="row px-3">

@@ -9,17 +9,21 @@ import { TokenStorageService } from '../_services/token-storage.service';
   styleUrls: ['./navbarright.component.css']
 })
 export class NavbarrightComponent implements OnInit {
+
+
   id =  this.tokenStorage.getUser().id;
   listUsers: any = [];
-  constructor( 
+  constructor(
     private friendService: FriendService,
     private tokenStorage: TokenStorageService,
     private router: Router
     ) {
   }
+
   ngOnInit(): void {
     this.getListUser();
   }
+
   getListUser(){
     this.friendService.getListFriend(this.id).subscribe(
       data => {
@@ -27,7 +31,9 @@ export class NavbarrightComponent implements OnInit {
     })
   }
 
-  navigateToFriendHome(id){
-    this.router.navigateByUrl('/myfriend/'+ id+'/timeline-friend-profile/'+ id);
-  }
+  redirectTo(idFriend){
+    this.router.navigateByUrl('/', {skipLocationChange: true}).then(()=>
+    this.router.navigate(['/myfriend/'+ idFriend+'/timeline-friend-profile/'+ idFriend]));
+ }
+
 }

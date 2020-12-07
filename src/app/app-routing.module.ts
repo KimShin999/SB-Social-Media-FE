@@ -57,7 +57,7 @@ const routes: Routes = [
         component: TimelineFriendProfileComponent,
       },
       {
-        path: 'about',
+        path: 'about/:id',
         component: AboutFriendComponent,
       },
       {
@@ -65,7 +65,7 @@ const routes: Routes = [
         component: PhotoFriendComponent,
       },
       {
-        path: 'friend',
+        path: 'friend/:id',
         component: FriendOfFriendComponent,
       },
     ],

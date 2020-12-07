@@ -44,7 +44,6 @@ export class NewfeedComponent implements OnInit {
     this.userService.getUserById(this.id).subscribe(
       data => {
         this.user = data;
-        console.log(this.user);
       },
       err => {
         this.user = JSON.parse(err.error).message;
@@ -80,9 +79,9 @@ export class NewfeedComponent implements OnInit {
       }).catch(e => {
         console.log("ko dang dc");
       })
-    
+
       // this.checkGlobalLike.push({value: false});
-      
+
   }
   selectFiles(event): void {
     this.progressInfos = [];
@@ -118,11 +117,11 @@ export class NewfeedComponent implements OnInit {
 
   eventLike(postId) {
     this.likeService.updateData(postId, this.id)
-      .then(res => { 
+      .then(res => {
         this. getAllGlobalPost();
       }).catch(e => {
       })
-     
+
   }
 
   onChange(value) {
@@ -148,7 +147,6 @@ export class NewfeedComponent implements OnInit {
   editComment(comment){
     this.commentService.updateComment(comment,this.id).subscribe(
       (data) =>{
-        console.log(data);
       }
     )
   }

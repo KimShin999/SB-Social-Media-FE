@@ -1,6 +1,6 @@
 <aside class="sidebar static">
     <div class="widget">
-        <h4 class="widget-title">Shortcuts</h4>
+        <h4 class="widget-title">Your shortcuts</h4>
         <ul class="naves">
             <li>
                 <i class="ti-clipboard"></i>
@@ -8,20 +8,20 @@
             </li>
             <li>
                 <i class="ti-files"></i>
-                <a href="fav-page.html" title="">My pages</a>
+                <a (click)="homefriend(idUserCurrent)" title="">My pages</a>
             </li>
             <li>
                 <i class="ti-user"></i>
-                <a href="timeline-friends.html" title="">friends</a>
+                <a title="">friends</a>
             </li>
-            <li>
+            <!-- <li>
                 <i class="ti-image"></i>
                 <a href="timeline-photos.html" title="">images</a>
-            </li>
-            <li>
+            </li> -->
+            <!-- <li>
                 <i class="ti-bell"></i>
                 <a href="notifications.html" title="">Notifications</a>
-            </li>
+            </li> -->
             <li>
                 <i class="ti-power-off"></i>
                 <a (click)="logout()" href="">Logout</a>
@@ -31,7 +31,7 @@
 
 
     <div class="widget">
-      <h4 class="widget-title">Lời mời kết bạn</h4>
+      <h4 class="widget-title">Friend request</h4>
       <div class="tab-content">
           <ul class="nearby-contct" *ngFor="let friendRequest of listFriendRequest">
             <li >
@@ -40,8 +40,8 @@
                   <a (click)="homefriend(friendRequest.firstUser.id)" title=""><img src={{friendRequest.firstUser.avatar}} alt=""></a>
                 </figure>
                 <div class="pepl-info">
-                  <h4><a (click)="homefriend(friendRequest.firstUser.id)" title="">{{friendRequest.firstUser.username}}</a></h4>
-                  <span>ftv model</span>
+                  <h4><a (click)="homefriend(friendRequest.firstUser.id)" title="">{{friendRequest.firstUser.firstName}}</a></h4>
+                  <span></span>
                 </div>
               </div>
             </li>

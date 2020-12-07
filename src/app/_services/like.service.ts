@@ -14,7 +14,6 @@ export class LikeService {
   updateData = (postId, userId): Promise<Object> => {
     return new Promise((resolve, reject) => {
       let url = API_URL + 'update/' + postId + '/' + userId;
-      console.log(url);
       this.http.get(url)
         .subscribe(res => {
           resolve(res);
@@ -36,10 +35,10 @@ export class LikeService {
   //               })
   //       })
   //     }
+
   getIsLike = (postId, userId): Promise<Object> => {
     return new Promise((resolve, reject) => {
       let url = API_URL + 'checkLike/' + postId + '/' + userId;
-      console.log(url);
       this.http.get(url)
         .subscribe(res => {
           resolve(res);
@@ -48,5 +47,19 @@ export class LikeService {
         })
     })
   }
+
+  getListUserLike = (postId): Promise<Object> => {
+    return new Promise((resolve, reject) => {
+      let url = API_URL + 'listUserLikePost/' + postId;
+      this.http.get(url)
+        .subscribe(res => {
+          resolve(res);
+        }, err => {
+          reject(err);
+        })
+    })
+  }
+
+
+
 }
- 

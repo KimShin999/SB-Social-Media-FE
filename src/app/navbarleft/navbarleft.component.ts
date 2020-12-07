@@ -25,10 +25,11 @@ export class NavbarleftComponent implements OnInit {
     private serviceRelationship: RelationshipService,
     private router: Router
   ) {
-    this.getMakeFriendRequest();
+
   }
 
   ngOnInit(): void {
+    this.getMakeFriendRequest();
   }
 
   logout(){
@@ -47,8 +48,9 @@ export class NavbarleftComponent implements OnInit {
     })
   }
 
-  homefriend(id){
-    this.router.navigate(["myfriend",id]);
- }
+ homefriend(idFriend){
+  this.router.navigateByUrl('/', {skipLocationChange: true}).then(()=>
+  this.router.navigate(['/myfriend/'+ idFriend+'/timeline-friend-profile/'+ idFriend]));
+}
 
 }

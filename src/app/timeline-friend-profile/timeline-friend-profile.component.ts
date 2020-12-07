@@ -4,6 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { Identifier } from 'typescript';
 import { CommentService } from '../_services/comment.service';
+import { LikeService } from '../_services/like.service';
 import { PostService } from '../_services/post.service';
 import { ProfilePostService } from '../_services/profile-post.service';
 import { TokenStorageService } from '../_services/token-storage.service';
@@ -16,7 +17,6 @@ import { UserService } from '../_services/user.service';
 })
 export class TimelineFriendProfileComponent implements OnInit {
 
-  @Input() id;
 
   post: any = {
   };
@@ -33,6 +33,8 @@ export class TimelineFriendProfileComponent implements OnInit {
   fileInfos: Observable<any>;
   selectedFiles: FileList;
   posts: any = [];
+  checkGlobalLike: any = [];
+  listUserLike: any = [];
 
   constructor(
     private userService: UserService,
@@ -41,10 +43,15 @@ export class TimelineFriendProfileComponent implements OnInit {
     private profilePostService: ProfilePostService,
     private router: Router,
     private commentService: CommentService,
-    private actRoute: ActivatedRoute
+    private actRoute: ActivatedRoute,
+    private likeService: LikeService
   ) {
+
+  }
+
+  ngOnInit(): void {
     this.idSearch = parseInt(this.actRoute.snapshot.params.id);
-    
+
     this.router.navigateByUrl('/myfriend/'+ this.idSearch+'/timeline-friend-profile/'+ this.idSearch);
     this.userService.getUserById(this.idSearch).subscribe(
       data => {
@@ -64,10 +71,6 @@ export class TimelineFriendProfileComponent implements OnInit {
       }
     );
     this.getAllPostByUser();
-  }
-
-  ngOnInit(): void {
-
 
     }
 
@@ -87,59 +90,6 @@ export class TimelineFriendProfileComponent implements OnInit {
       });
     }
 
-
-  // upPost():void{
-  //   this.profilePostService.createpost(this.post,this.id).
-  //   then(res =>{
-  //     this.posts.push(res);
-  //     this.posts = this.posts.reverse();
-  //     this.post.content ="";
-  //   }).catch(e => {
-  //     console.log("ko dang dc");
-  //   })
-  // }
-
-  // selectFiles(event): void {
-  //   this.progressInfos = [];
-  //   const files = event.target.files;    let isImage = true;
-  //   for (let i = 0; i < files.length; i++) {
-  //     if (files.item(i).type.match('image.*')) {
-  //       continue;
-  //     } else {
-  //       isImage = false;
-  //       alert('invalid format!');
-  //       break;
-  //     }
-  //   }
-
-  //   if (isImage) {
-  //     this.selectedFiles = event.target.files;
-  //   } else {
-  //     this.selectedFiles = undefined;
-  //      event.srcElement.percentage = null;
-  //   }
-  //   for (let i = 0; i < this.selectedFiles.length; i++) {
-  //     this.upload(i, this.selectedFiles[i]);
-  //   }
-  // }
-
-  getAllPostByUser(){
-    this.profilePostService.getAllPostByUser(this.idSearch).subscribe(
-      (data) =>{
-        console.log(data);
-        this.posts = data;
-      }
-    )
-  }
-
-  // updatePost(post){
-  //   this.profilePostService.editPost(this.id, post).subscribe(
-  //     (data) => {
-  //       this.post = data;
-  //     }
-  //   )
-  // }
-
   onChange(value) {
     this.comment.content = value;
   }
@@ -152,5 +102,59 @@ export class TimelineFriendProfileComponent implements OnInit {
         this.comment.content = "";
       }
 
+      deleteComment(id){
+        this.commentService.deleteComment(this.idUserCurrent,id).subscribe(
+          (data) =>{
+            this.getAllPostByUser();
+          }
+        )
+      }
 
+      editComment(comment){
+        this.commentService.updateComment(comment,this.idUserCurrent).subscribe(
+          (data) =>{
+            console.log(data);
+          }
+        )
+      }
+
+      getAllPostByUser(){
+        this.profilePostService.getAllPostByUser(this.idSearch).subscribe(
+          (data) =>{
+            this.posts = data;
+            this.posts = this.posts.reverse();
+            for (let i = 0; i < this.posts.length; i++) {
+              this.likeService.getIsLike(this.posts[i].id, this.idUserCurrent)
+                .then(res => {
+                  this.checkGlobalLike[i] = {value : res};
+                }).catch(e => {
+                })
+            }
+          }
+        )
+      }
+
+      eventLike(postId) {
+        this.likeService.updateData(postId, this.idUserCurrent)
+          .then(res => {
+            this.getAllPostByUser();
+          }).catch(e => {
+          })
+      }
+
+      getListUserLike(postId){
+        this.listUserLike = [];
+        this.likeService.getListUserLike(postId)
+          .then(res => {
+            this.listUserLike = res;
+            alert(this.getListUserLike.length)
+          }).catch(e => {
+          })
+      }
+
+
+ homefriend(idFriend){
+  this.router.navigateByUrl('/', {skipLocationChange: true}).then(()=>
+  this.router.navigate(['/myfriend/'+ idFriend+'/timeline-friend-profile/'+ idFriend]));
+}
 }
