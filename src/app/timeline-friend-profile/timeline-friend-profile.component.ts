@@ -122,7 +122,6 @@ export class TimelineFriendProfileComponent implements OnInit {
         this.profilePostService.getAllPostByUser(this.idSearch).subscribe(
           (data) =>{
             this.posts = data;
-            this.posts = this.posts.reverse();
             for (let i = 0; i < this.posts.length; i++) {
               this.likeService.getIsLike(this.posts[i].id, this.idUserCurrent)
                 .then(res => {
