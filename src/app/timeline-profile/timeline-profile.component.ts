@@ -179,4 +179,8 @@ export class TimelineProfileComponent implements OnInit {
       })
       
   }
+  homeFriend(idFriend){
+    this.router.navigateByUrl('/', {skipLocationChange: true}).then(()=>
+    this.router.navigate(['/myfriend/'+ idFriend+'/timeline-friend-profile/'+ idFriend]));
+  }
 }
