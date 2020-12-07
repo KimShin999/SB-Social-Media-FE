@@ -89,13 +89,16 @@ export class SearchUserComponent implements OnInit {
           if(this.listrelationship[j].status.id == 1){
             if(this.listrelationship[j].secondUser.id == this.listUser[i].id){
               this.checkrelationship.push(1);
+
               this.checkBreak = 1;
             }else{
               this.checkrelationship.push(3);
+
               this.checkBreak = 1;
             }
           }else if(this.listrelationship[j].status.id == 2){
             this.checkrelationship.push(2);
+
             this.checkBreak = 1;
           }
         }
@@ -117,8 +120,8 @@ export class SearchUserComponent implements OnInit {
     })
   }
 
-  deleterelationship(i){
-    this.serviceRelationship.deleterelationship(this.listrelationship[i].id)
+  deleterelationshipbyId(id, i){
+    this.serviceRelationship.deleterelationshipbyId(this.idUserCurrent, id )
     .then(res => {
       this.checkrelationship[i] = 0;
     }).catch(e => {
