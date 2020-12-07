@@ -9,7 +9,7 @@
                     <img src="{{userSearch.avatar}}" alt="">
                 </figure>
                 <div class="friend-name">
-                    <ins><a (click)="homefriend(userSearch.id)" title="">{{userSearch.firstName}}</a></ins>
+                    <ins><a style="cursor: pointer;" (click)="homefriend(userSearch.id)" title="">{{userSearch.firstName}}</a></ins>
                     <span>{{post.createAt}}</span>
                 </div>
                 <div class="post-meta">
@@ -24,7 +24,7 @@
                         <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
                             <div class="carousel-inner">
                                 <div class="carousel-item" [ngClass]="{active: i == 0}" *ngFor="let image of post.images;index as i">
-                                    <img class="d-block w-100" src="{{image.img}}" (click)="homefriend(userSearch.id)" alt="First slide">
+                                    <img style="cursor: pointer;" class="d-block w-100" src="{{image.img}}" (click)="homefriend(userSearch.id)" alt="First slide">
                                 </div>
                             </div>
                             <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
@@ -40,9 +40,10 @@
                     <div class="we-video-info" *ngIf="checkGlobalLike[i].value == true">
                       <ul>
                           <li>
-                              <button type="submit" (click)="eventLike(post.id)" class="btn btn-primary">
+                              <!-- <button type="submit" (click)="eventLike(post.id)" class="btn btn-primary">
                                   unlike
-                              </button>
+                              </button> -->
+                              <i (click)="eventLike(post.id)" class="fa fa-thumbs-up" style="color: #516fdb;"></i>
                           </li>
                           <li>
                               {{post.likes.length}} likes
@@ -60,9 +61,10 @@
                     <div class="we-video-info" *ngIf="checkGlobalLike[i].value == false">
                       <ul>
                           <li>
-                              <button type="submit" (click)="eventLike(post.id)" class="btn btn-light">
+                              <!-- <button type="submit" (click)="eventLike(post.id)" class="btn btn-light">
                                   like
-                              </button>
+                              </button> -->
+                              <i (click)="eventLike(post.id)" class="fa fa-thumbs-o-up"></i>
                           </li>
                           <li>
                               {{post.likes.length}} likes
@@ -85,7 +87,7 @@
                         </div>
                         <div class="we-comment">
                             <div class="coment-head">
-                                <h5><a (click)="homefriend(comment.user.id)" title="">{{comment.user.firstName}}</a></h5>
+                                <h5><a style="cursor: pointer;" (click)="homefriend(comment.user.id)" title="">{{comment.user.firstName}}</a></h5>
                                 <span>1 year ago</span>
                                 <a *ngIf="comment.user.id == userCurrent.id" class="we-reply" title="Reply" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-caret-down"></i></a>
                                 <div class="dropdown show">
@@ -117,12 +119,9 @@
                             <p>{{comment.content}}</p>
                         </div>
                     </li>
-                    <li>
-                        <a href="#" title="" class="showmore underline">more comments</a>
-                    </li>
                     <li class="post-comment">
                         <div class="comet-avatar">
-                            <img src="{{userCurrent.avatar}}" alt="">
+                            <img style="cursor: pointer;" src="{{userCurrent.avatar}}" alt="">
                         </div>
                         <div class="post-comt-box">
                             <form method="post">
