@@ -17,7 +17,7 @@ import { CoverComponent } from './cover/cover.component';
 import { PhotoComponent } from './photo/photo.component';
 import { FriendsComponent } from './friends/friends.component';
 import { AboutComponent } from './about/about.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, FormBuilder, ReactiveFormsModule } from '@angular/forms';
 import { authInterceptorProviders } from './_helpers/auth.interceptor';
 import { TimelineProfileComponent } from './timeline-profile/timeline-profile.component';
 import { LayoutHomeFriendPageComponent } from './layout-home-friend-page/layout-home-friend-page.component';
@@ -56,6 +56,7 @@ import { SearchUserComponent } from './search-user/search-user.component';
     AppRoutingModule,
     NgbModule,
     FormsModule,
+    ReactiveFormsModule
   ],
   providers: [authInterceptorProviders],
   bootstrap: [AppComponent]

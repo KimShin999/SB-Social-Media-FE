@@ -57,8 +57,8 @@ export class LayoutLoginPageComponent implements OnInit {
           }
         },
       err => {
-        this.errorMessage = err.error.message;
         this.isLoginFailed = true;
+        this.errorMessage = err.error.message;
       }
     );
   }

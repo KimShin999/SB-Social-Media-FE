@@ -9,20 +9,20 @@
 
         </div>
         <div class="top-area">
-          <div class="user-img">
-            <button (click)="gotomypage()" class="btn btn-outline-light" style="border-radius: 20px; margin-bottom: 8px; width: auto; height: 40px;">
+            <div class="user-img">
+                <button (click)="gotomypage()" class="btn btn-outline-light" style="border-radius: 20px; margin-bottom: 8px; width: auto; height: 40px;">
               <label>
                 <img src="{{user.avatar}}" alt="" style=" width: 25px; height: 25px; border-radius: 50%;">
                 <label style="color: blue; margin-left: 8px; ">{{user.username}}</label>
               </label>
             </button>
-          </div>
-            <ul class="setting-area" >
+            </div>
+            <ul class="setting-area">
                 <li>
-                  <button (click)="gotosearchuser()" class="btn btn-outline-light" style="border-radius: 50%;  margin-left: 10px;">
+                    <button (click)="gotosearchuser()" class="btn btn-outline-light" style="border-radius: 50%;  margin-left: 10px;">
                     <a title="search" data-ripple=""><i class="ti ti-search" style="color: blue;"></i></a>
                   </button>
-                  <button (click)="logout()" class="btn btn-outline-light" style="border-radius: 50%;  margin-left: 10px;">
+                    <button (click)="logout()" class="btn btn-outline-light" style="border-radius: 50%;  margin-left: 10px;">
                     <a title="search" data-ripple=""><i class="ti ti-power-off" style="color: blue;"></i></a>
                   </button>
                 </li>
