@@ -149,11 +149,11 @@
                 <ul class="we-comet">
                     <li *ngFor="let comment of post.comments">
                         <div class="comet-avatar">
-                            <img src="{{comment.user.avatar}}" alt="">
+                            <img src="{{comment.user.avatar}}" alt="" (click)="homeFriend(comment.user.id)" style="cursor: pointer">
                         </div>
                         <div class="we-comment">
                             <div class="coment-head">
-                                <h5><a href="time-line.html" title="">{{comment.user.firstName}}</a></h5>
+                                <h5><a  title="" (click)="homeFriend(comment.user.id)"style="cursor: pointer; color:blue;" >{{comment.user.firstName}}</a></h5>
                                 <a *ngIf="comment.user.id == user.id" class="we-reply" title="Reply" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-caret-down"></i></a>
                                 <div class="dropdown show">
                                     <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
@@ -191,12 +191,12 @@
                             <p>{{comment.content}}</p>
                         </div>
                     </li>
-                    <li>
+                    <!-- <li>
                         <a href="#" title="" class="showmore underline">more comments</a>
-                    </li>
+                    </li> -->
                     <li class="post-comment">
                         <div class="comet-avatar">
-                            <img src="{{user.avatar}}" alt="">
+                            <img src="{{user.avatar}}" alt="" >
                         </div>
                         <div class="post-comt-box">
                             <form method="post">
