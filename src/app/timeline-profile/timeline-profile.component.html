@@ -26,40 +26,53 @@
     </div>
     <!-- add post new box -->
     <div class="central-meta item">
-        <div class="user-post" *ngFor="let post of posts; index as i">
+        <div class="user-post" *ngFor="let post of posts; index as isis">
             <div class="friend-info">
-                <figure>
-                    <img src="{{post.appUser.avatar}}" alt="">
-                </figure>
-                <div class="friend-name">
-                    <ins><a href="time-line.html" title="">{{user.username}}</a></ins>
-                    <span>{{post.createAt}}</span>
-                    <div class="dropdown">
-                        <button style="float: right;" type="button" class="btn btn-outline-primary" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-three-dots-vertical" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                            <path fill-rule="evenodd" d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z"/>
-                          </svg>
-                        </button>
-                        <div class="dropdown-menu">
-                            <a class="dropdown-item" data-toggle="modal" [attr.data-target]="'#'+post.id">Edit Post</a>
-                            <a class="dropdown-item" (click)="deletePost(post.id)">Delete Post</a>
+                <div class="row">
+                    <div class="co">
+                        <figure>
+                            <img src="{{post.appUser.avatar}}" alt="" style="width:50px ;  border-radius:50%" >
+                        </figure>
+                    </div>
+                    <div class="col">
+                        <div class="friend-name">
+                            <ins><a href="time-line.html" title="">{{user.firstName}}</a></ins>
+                            <span>{{post.createAt}}</span>
+                            <!-- dau ba cham  -->
                         </div>
-
-                        <!-- modal -->
-                        <div class="modal fade" [attr.id]="post.id" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                            <div class="modal-dialog" role="document">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h5 class="modal-title" id="exampleModalLabel">Edit Post</h5>
-                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-                                    </div>
-                                    <div class="modal-body">
-                                        <div class="form-group">
-                                            <label for="exampleFormControlTextarea1">Enter content</label>
-                                            <textarea class="form-control" id="exampleFormControlTextarea1" name="content" [(ngModel)]="post.content"></textarea>
+                    </div>
+                    <div class="col">
+                        <div class="dropdown">
+                            <button style="float: right;" type="button" class="btn btn-outline-primary" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-three-dots-vertical" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd" d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z"/>
+                              </svg>
+                            </button>
+                            <div class="dropdown-menu">
+                                <a class="dropdown-item" data-toggle="modal" [attr.data-target]="'#'+post.id">Edit Post</a>
+                                <a class="dropdown-item" (click)="deletePost(post.id)">Delete Post</a>
+                            </div>
+    
+                            <!-- modal -->
+                            <div class="modal fade" [attr.id]="post.id" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLabel">Edit Post</h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
                                         </div>
+                                        <div class="modal-body">
+                                            <div class="form-group">
+                                                <label for="exampleFormControlTextarea1">Enter content</label>
+                                                <textarea class="form-control" id="exampleFormControlTextarea1" name="content" [(ngModel)]="post.content"></textarea>
+                                            </div>
+                                        </div>
+                                        <!-- <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                            <button type="button" class="btn btn-primary" (click)="updatePost(post)">Save changes</button>
+                                        </div> -->
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -68,10 +81,12 @@
                                 </div>
                             </div>
                         </div>
-                        <!-- modal -->
-
                     </div>
                 </div>
+
+            <!-- abc -->
+                
+                <!-- abc -->
                 <div class="post-meta">
                     <div class="description">
                         <p>
@@ -99,12 +114,10 @@
                         </div>
                     </div>
 
-                    <div class="we-video-info" *ngIf="checkGlobalLike[i].value == true">
+                    <div class="we-video-info" *ngIf="checkGlobalLike[isis].value == true">
                         <ul>
                             <li>
-                                <button type="submit" (click)="eventLike(post.id)" class="btn btn-primary">
-                                    unlike
-                                </button>
+                                <i (click)="eventLike(post.id)" class="fa fa-thumbs-up" style="color: darkblue;"></i>
                             </li>
                             <li>
                                 {{post.likes.length}} likes
@@ -117,12 +130,10 @@
                             </li>
                         </ul>
                     </div>
-                    <div class="we-video-info" *ngIf="checkGlobalLike[i].value == false">
+                    <div class="we-video-info" *ngIf="checkGlobalLike[isis].value == false">
                         <ul>
                             <li>
-                                <button type="submit" (click)="eventLike(post.id)" class="btn btn-light">
-                                    like
-                                </button>
+                                <i (click)="eventLike(post.id)" class="fa fa-thumbs-o-up" ></i>
                             </li>
                             <li>
                                 {{post.likes.length}} likes
@@ -142,12 +153,11 @@
                 <ul class="we-comet">
                     <li *ngFor="let comment of post.comments">
                         <div class="comet-avatar">
-                            <img src="{{comment.user.avatar}}" alt="">
+                            <img src="{{comment.user.avatar}}" alt="" (click)="homeFriend(comment.user.id)" style="cursor: pointer">
                         </div>
                         <div class="we-comment">
                             <div class="coment-head">
-                                <h5><a href="time-line.html" title="">{{comment.user.firstName}}</a></h5>
-                                <span>1 year ago</span>
+                                <h5><a  title="" (click)="homeFriend(comment.user.id)"style="cursor: pointer; color:blue;" >{{comment.user.firstName}}</a></h5>
                                 <a *ngIf="comment.user.id == user.id" class="we-reply" title="Reply" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-caret-down"></i></a>
                                 <div class="dropdown show">
                                     <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
@@ -185,12 +195,12 @@
                             <p>{{comment.content}}</p>
                         </div>
                     </li>
-                    <li>
+                    <!-- <li>
                         <a href="#" title="" class="showmore underline">more comments</a>
-                    </li>
+                    </li> -->
                     <li class="post-comment">
                         <div class="comet-avatar">
-                            <img src="{{user.avatar}}" alt="">
+                            <img src="{{user.avatar}}" alt="" >
                         </div>
                         <div class="post-comt-box">
                             <form method="post">
