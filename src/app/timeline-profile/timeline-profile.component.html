@@ -63,7 +63,7 @@
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                        <button type="button" class="btn btn-primary" (click)="updatePost(post)">Save changes</button>
+                                        <button type="button" class="btn btn-primary" (click)="updatePost(post)" data-dismiss="modal">Save changes</button>
                                     </div>
                                 </div>
                             </div>
@@ -82,7 +82,7 @@
                         </div> -->
                         <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
                             <div class="carousel-inner">
-                                <div class="carousel-item" [ngClass]="{active: i == 0}" *ngFor="let image of post.images;index as isis">
+                                <div class="carousel-item" [ngClass]="{active: i == 0}" *ngFor="let image of post.images;index as i">
                                     <a class="strip" href="{{image.img}}" title="" data-strip-group="mygroup" data-strip-group-options="loop: false">
                                         <img class="d-block w-100" src="{{image.img}}" alt="First slide" style="height: 500px; ">
                                     </a>
@@ -174,7 +174,7 @@
                                             </div>
                                             <div class="modal-footer">
                                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                                <button type="button" class="btn btn-primary" (click)="editComment(comment)">Edit Comment</button>
+                                                <button type="button" class="btn btn-primary" (click)="editComment(comment)" data-dismiss="modal">Edit Comment</button>
                                             </div>
                                         </div>
                                     </div>

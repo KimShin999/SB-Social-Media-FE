@@ -11,7 +11,7 @@ export class PhotoComponent implements OnInit {
   user: any = {
   }
   posts : any =[];
-  imgS : any = [];
+  images : any = [];
   id =  this.tokenStorage.getUser().id;
   constructor( 
     private userService: UserService,
@@ -24,6 +24,11 @@ export class PhotoComponent implements OnInit {
     this.profileService.getAllPostByUser(this.id).subscribe(
       data => {
         this.posts = data;
+        this.posts.forEach(post => {
+          post.images.forEach(image => {
+            this.images.push(image);
+          });
+        });
       })
   }
   }

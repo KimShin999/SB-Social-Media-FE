@@ -36,7 +36,9 @@ export class LayoutRegisterPageComponent implements OnInit {
       }
       if(this.isSuccessful = true){
         this.isSignUpFailed = false;
-        this.router.navigateByUrl('/login')
+        setTimeout(()=>{
+          this.router.navigateByUrl('/login')
+        },3000)
       }
     },
     err =>

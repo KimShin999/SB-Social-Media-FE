@@ -1,7 +1,5 @@
-<div class="row" *ngFor="let post of posts">
-    <div class="col-6" *ngFor="let image of post.images">
-        <a class="strip" href="{{image.img}}" title="" data-strip-group="mygroup" data-strip-group-options="loop: false">
-            <img src="{{image.img}}" alt="" style="width: 300px ;height: 300px ;">
-        </a>
+<div class="row">
+    <div class="col-6" *ngFor="let image of images" style="margin-top: 20px;">
+        <img src="{{image.img}}" alt="" style="height: 300px; width: 300px;">
     </div>
 </div>

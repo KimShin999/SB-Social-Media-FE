@@ -1,3 +1,4 @@
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
@@ -21,12 +22,17 @@ export class CoverComponent implements OnInit {
   message: string;
   imageName: any;
   listGender: any = []
+  editInfoForm: FormGroup;
+
   constructor(
     private userService: UserService,
     private tokenStorage: TokenStorageService,
     private router: Router,
-    private http: HttpClient
-  ) { }
+    private http: HttpClient,
+    private fb: FormBuilder
+  ) {
+
+   }
 
   ngOnInit(): void {
     // console.log(this.id)
@@ -39,6 +45,12 @@ export class CoverComponent implements OnInit {
         this.user = JSON.parse(err.error).message;
       }
     );
+
+    this.editInfoForm = this.fb.group({
+      firstName: ['',[Validators.required]],
+      lastName: ['',[Validators.required]],
+      email: ['',[Validators.required],[Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$")]],
+    })
   }
 
   public onFileChanged(event) {
