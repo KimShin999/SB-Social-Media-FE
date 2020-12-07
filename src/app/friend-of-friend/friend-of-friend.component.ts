@@ -90,16 +90,26 @@ export class FriendOfFriendComponent implements OnInit {
  }
 
  createrelationship(id2, i){
-  this.serviceRelationship.createrelationship(this.idUserCurrent, id2)
-  .then(res => {
-    this.relationship = res;
-    this.checkrelationship[i] = 1;
-  }).catch(e => {
-  })
+   if(this.idUserCurrent != id2){
+    this.serviceRelationship.createrelationship(this.idUserCurrent, id2)
+    .then(res => {
+      this.relationship = res;
+      this.checkrelationship[i] = 1;
+    }).catch(e => {
+    })
+   }
 }
 
 deleterelationship(i){
   this.serviceRelationship.deleterelationship(this.listrelationship[i].id)
+  .then(res => {
+    this.checkrelationship[i] = 0;
+  }).catch(e => {
+  })
+}
+
+deleterelationshipbyId(id, i){
+  this.serviceRelationship.deleterelationshipbyId(this.idUserCurrent, id )
   .then(res => {
     this.checkrelationship[i] = 0;
   }).catch(e => {
