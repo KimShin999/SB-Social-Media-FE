@@ -28,7 +28,7 @@
     </div>
     <!-- add post new box -->
     <!-- thuong them -->
-    <div class="central-meta item" *ngFor="let post of listGlobalPost; index as i">
+    <div class="central-meta item" *ngFor="let post of listGlobalPost; index as isis">
         <div class="user-post" *ngIf="post.privacyPost.id == 1">
             <div class="friend-info">
                 <figure>
@@ -68,12 +68,13 @@
                     </div>
                     <!-- end img -->
 
-                    <div class="we-video-info" *ngIf="checkGlobalLike[i].value == true">
+                    <div class="we-video-info" *ngIf="checkGlobalLike[isis].value == true">
                         <ul>
                             <li>
-                                <button type="submit" (click)="eventLike(post.id)" class="btn btn-primary">
+                                <!-- <button type="submit" (click)="eventLike(post.id)" class="btn btn-primary">
                                     unlike
-                                </button>
+                                </button> -->
+                                <i (click)="eventLike(post.id)" class="fa fa-thumbs-up" style="color: darkblue;"></i>
                             </li>
                             <li>
                                 {{post.likes.length}} likes
@@ -81,18 +82,21 @@
                             <li>
                                 <span class="comment" data-toggle="tooltip" title="Comments">
                                     <i class="fa fa-comments-o"></i>
-                                    <ins>52</ins>
                                 </span>
+                            </li>
+                            <li>
+                                {{post.comments.length}} comments
                             </li>
                         </ul>
                     </div>
 
-                    <div class="we-video-info" *ngIf="checkGlobalLike[i].value == false">
+                    <div class="we-video-info" *ngIf="checkGlobalLike[isis].value == false">
                         <ul>
                             <li>
-                                <button type="submit" (click)="eventLike(post.id)" class="btn btn-light">
+                                <!-- <button type="submit" (click)="eventLike(post.id)" class="btn btn-light">
                                     like
-                                </button>
+                                </button> -->
+                                 <i (click)="eventLike(post.id)" class="fa fa-thumbs-o-up" ></i>
                             </li>
                             <li>
                                 {{post.likes.length}} likes
@@ -100,8 +104,10 @@
                             <li>
                                 <span class="comment" data-toggle="tooltip" title="Comments">
                                     <i class="fa fa-comments-o"></i>
-                                    <ins>52</ins>
                                 </span>
+                            </li>
+                            <li>
+                                {{post.comments.length}} comments
                             </li>
                         </ul>
                     </div>
