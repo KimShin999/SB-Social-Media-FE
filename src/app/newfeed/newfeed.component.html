@@ -35,7 +35,7 @@
                     <img src={{post.appUser.avatar}} alt="">
                 </figure>
                 <div class="friend-name">
-                    <ins><a href="time-line.html" title="">{{post.appUser.username}}</a></ins>
+                    <ins><a (click)="homefriend(post.appUser.id)" title="">{{post.appUser.firstName}}</a></ins>
                     <span>published: {{post.createAt}}</span>
                 </div>
                 <div class="post-meta">
@@ -122,7 +122,7 @@
                         </div>
                         <div class="we-comment">
                             <div class="coment-head">
-                                <h5><a href="time-line.html" title="">{{comment.user.username}}</a></h5>
+                                <h5><a (click)="homefriend(comment.user.id)"  title="">{{comment.user.firstName}}</a></h5>
                                 <span>1 year ago</span>
                                 <!-- <a class="we-reply" href="#" title="Reply"><i class="fa fa-reply"></i></a> -->
                                 <a *ngIf="comment.user.id == user.id" class="we-reply" title="Reply"

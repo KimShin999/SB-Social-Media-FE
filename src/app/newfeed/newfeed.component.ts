@@ -157,4 +157,9 @@ export class NewfeedComponent implements OnInit {
       }
     )
   }
+
+  homefriend(idFriend){
+  this.router.navigateByUrl('/', {skipLocationChange: true}).then(()=>
+  this.router.navigate(['/myfriend/'+ idFriend+'/timeline-friend-profile/'+ idFriend]));
+}
 }
