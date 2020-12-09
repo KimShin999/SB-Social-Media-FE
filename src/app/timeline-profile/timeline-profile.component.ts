@@ -133,6 +133,7 @@ export class TimelineProfileComponent implements OnInit {
       this.posts.push(res);
       this.posts = this.posts.reverse();
       this.post.content ="";
+      this.getAllPostByUser();
     }).catch(e => {
       console.log("ko dang dc");
     })
@@ -177,7 +178,7 @@ export class TimelineProfileComponent implements OnInit {
       }).catch(e => {
         alert('Connection Error !');
       })
-      
+
   }
   homeFriend(idFriend){
     this.router.navigateByUrl('/', {skipLocationChange: true}).then(()=>

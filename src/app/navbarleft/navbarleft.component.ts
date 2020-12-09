@@ -53,4 +53,8 @@ export class NavbarleftComponent implements OnInit {
   this.router.navigate(['/myfriend/'+ idFriend+'/timeline-friend-profile/'+ idFriend]));
 }
 
+gototimeline(){
+  this.router.navigateByUrl('/timeline')
+}
+
 }

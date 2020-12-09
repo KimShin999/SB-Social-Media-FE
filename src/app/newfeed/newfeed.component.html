@@ -117,7 +117,7 @@
                         <div class="we-comment">
                             <div class="coment-head">
                                 <h5><a (click)="homefriend(comment.user.id)" title="" style="cursor: pointer; color: blue;">{{comment.user.firstName}}</a></h5>
-                                <span>1 year ago</span>
+
                                 <!-- <a class="we-reply" href="#" title="Reply"><i class="fa fa-reply"></i></a> -->
                                 <a *ngIf="comment.user.id == user.id" class="we-reply" title="Reply" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-caret-down fa-1x"></i></a>
                                 <div class="dropdown show">
